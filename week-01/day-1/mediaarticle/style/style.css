@@ -1,0 +1,36 @@
+body {
+  background: white;
+}
+
+img {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 250%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  font-size: 150%;
+  color: grey;
+  font-family: 'Open Sans', sans-serif;
+}
+
+p {
+  text-align: left;
+  padding-left: 300px;
+  padding-right: 300px;
+  margin-bottom: 20px;
+  line-height: 150%;
+  font-size: 22px;
+  font-family: 'Abhaya Libre', serif;
+}
+
+div.lead {
+    font-style: italic;
+}
