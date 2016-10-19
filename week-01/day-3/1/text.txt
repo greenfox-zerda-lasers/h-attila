@@ -1,3 +1,6 @@
 szoveg
+<<<<<<< HEAD
 szoveg 2
 szoveg 3
+=======
+>>>>>>> fd58dc015fc4a3fc55d10f76c3ddf52f72c4b86a
