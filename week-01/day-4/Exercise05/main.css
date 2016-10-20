@@ -1,0 +1,29 @@
+h1 {
+  color: blue;
+}
+
+h2 {
+  color: #F6B012
+}
+
+p {
+  color: #red;
+}
+
+.ul_1 {
+  color: blue;
+  list-style-type: square;
+}
+
+.ul_2 {
+  color: #263133;
+  list-style-type: disc;
+}
+
+ol {
+  color: #263133;
+}
+
+span {
+  color: red;
+}

@@ -1,0 +1,23 @@
+div {
+  color: green;
+}
+
+div.html {
+  color: black;
+}
+
+span.color_1 {
+  color: #B74E32;
+}
+
+span.color {
+  color: blue;
+}
+
+p {
+  color: black;
+}
+
+p::first-letter {
+  color: #B94829;
+}
