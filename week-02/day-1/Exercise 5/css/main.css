@@ -1,0 +1,33 @@
+body {
+  margin: 0px auto;
+  max-width: 600px;
+
+}
+
+main {
+  background-color: green;
+  display: flex;
+  flex-wrap: wrap;
+  height: 480px;
+  justify-content: space-around;
+  padding-top: 5px;
+}
+
+.box {
+  flex: 0 1 180px;
+  height: 140px;
+  background-color: red;
+  border: 4px solid black;
+}
+
+.snap {
+  position:relative;
+  top: 16px;
+  left: 16px;
+}
+
+p {
+  text-align: center;
+  font-family: 'Arial', serif;
+  font-size: 40px;
+}

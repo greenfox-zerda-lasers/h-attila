@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Exercise 1</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <title></title>
+  </head>
+  <body>
+    <main>
+      <form class="form" action="index.html" method="post">
+        <h1>Profil</h1>
+        <section class="section-1">
+          <div class="section-1-left">
+            <h1>Személyes adatok</h1>
+            <label for="name">Név<span></span></label>
+            <input type="text" name="name" value="Neved" required="">
+            <div class="hasabok">
+              <div class="form-col1">
+                <label for="birdth-date">Születési éved</label>
+                <input type="input" name="birdth-date" value="Pl. 1984">
+              </div>
+              <div class="form-col2">
+                <label for="gender">Nemed</label><br>
+                <input type="radio" name="gender" value="no">
+                <label for="no">nő</label>
+                <input type="radio" name="gender" value="férfi" label="ferfi">
+                <label for="ferfi">férfi</label>
+              </div>
+            </div>
+            <label for="brand">Milyen márkát szeretsz?</label>
+            <div class="hasabok">
+              <div class="form-col1">
+                <input type="checkbox" name="brand" value="adidas" id="adidas">
+                <label for="adidas">Adidas</label>
+                <input type="checkbox" name="brand" value="apple" id="apple">
+                <label for="apple">Apple</label>
+                <input type="checkbox" name="brand" value="coca-cola" id="coca-cola">
+                <label for="coca-cola">Coca-Cola</label>
+                <input type="checkbox" name="brand" value="mazda" id="mazda">
+                <label for="mazda">Mazda</label>
+                <input type="checkbox" name="brand" value="nike" id="nike">
+                <label for="nike">Nike</label>
+              </div>
+              <div class="form-col2">
+                <input type="checkbox" name="brand" value="opel" id="opel">
+                <label for="opel">Opel</label>
+                <input type="checkbox" name="brand" value="rayban" id="rayban">
+                <label for="rayban">Ray-Ban</label>
+                <input type="checkbox" name="brand" value="starbucks" id="starbucks">
+                <label for="starbucks">Starbacks</label>
+                <input type="checkbox" name="brand" value="tesla" id="tesla">
+                <label for="tesla">Tesla</label>
+                <input type="checkbox" name="brand" value="yahoo" id="yahoo">
+                <label for="yahoo">Yahoo</label>
+              </div>
+            </div>
+            <p>Többet is választhatsz!</p>
+          </div>
+          <div class="section-1-right">
+            <h1>Kapcsolat</h1>
+            <label for="phone">Telefonszámod<span></span></label>
+            <input type="text" name="phone" value="+36 -- --- ----" required>
+            <label for="email">E-mail címed<span></span></label>
+            <input type="email" name="email" value="nev@domain.hu" required>
+            <label for="facebook">Facebook profilod</label>
+            <input type="text" name="facebook" value="http://facebook.com/...">
+            <label for="twitter">Twitter profilod</label>
+            <input type="text" name="twitter" value="http://twitter.com/...">
+            <label for="home">Milyen házban laksz?</label>
+            <select id="select-button" name="home">
+              <option selected disabled>Válassz típust...</option>
+              <option value="csaladi">Családi</option>
+              <option value="tarsas">Társas</option>
+              <option value="panel">Panel</option>
+            </select>
+          </div>
+        </section>
+        <section class="section-2">
+          <div class="bemutatkozas">
+            <label for="bemutatkozas">Bemutatkozás<span></span></label>
+            <textarea name="bemutatkozas" rows="10" cols="40" required>Írj magadról pár mondatot!</textarea>
+          </div>
+          <div class="file-upload">
+            <label for="input">CV feltöltése</label>
+            <button id="input" type="file" name="upload">file kiválasztása</button>
+          </div>
+          <div class="user-terms">
+            <input type="checkbox" name="terms" value="accept" id="terms">
+            <label for="terms">Elfogadom a <a href="#">felhasználási feltételeket</a></label>
+          </div>
+        </section>
+        <section class="section-3">
+          <div class="footer-buttons">
+            <div class="buttons">
+              <button id="save-button" type="button" name="save">Mentés</button>
+            </div>
+            <div class="buttons">
+              <button id="cancel-button" type="button" name="cancel">Űrlap törlése</button>
+            </div>
+
+          </div>
+        </section>
+      </form>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+body {
+  max-width: 100%;
+}
+
+header {
+  height: 100px;
+  background-color: aqua;
+}
+
+main {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-left {
+  flex: 0 0 100px;
+  background-color: orange;
+  margin-right: 20px
+
+}
+
+.main-content {
+  flex: 1 1 300px;
+  background-color: red;
+  position: relative;
+}
+
+.box {
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.sidebar-right {
+  flex: 0 0 100px;
+  background-color: purple;
+  margin-left: 20px;
+  z-index: 1;
+}
+
+footer {
+  height: 100px;
+  background-color: blue;
+}

@@ -1,0 +1,85 @@
+main {
+  margin: 0px auto;
+  width: 500px;
+  position: relative;
+}
+
+section {
+    border-bottom: 2px solid black;
+    text-align: justify;
+}
+
+.part-1 img {
+  float: left;
+  margin: 0px 20px 30px 0px;
+}
+
+
+.part-2 img {
+  float: right;
+  margin: 0px 0px 30px 20px;
+}
+
+.popup {
+  width: 250px;
+  height: 150px;
+  position: absolute;
+  top: 20px;
+  left: 130px;
+  border: 2px solid black;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.popup-x {
+  position: absolute;
+  left: 200px;
+  top: -15px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  color: white;
+  background-color: black;
+}
+
+.popup-x p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.popup-head {
+  flex: 1 1 40px;
+}
+
+.popup-head p {
+  padding-left: 20px;
+  color: red
+}
+
+.popup-main {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  flex: 1 1 60px;
+}
+
+.popup-main {
+  padding-left: 20px;
+}
+
+.popup-footer {
+  flex: 1 1 50px;
+}
+
+.popup-buttons {
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.popup-buttons p {
+  flex: 0 0 10px;
+  padding: 3px;
+  margin: 10px 10px 10px 0px;
+  background-color: grey;
+  border-radius: 5px;
+}

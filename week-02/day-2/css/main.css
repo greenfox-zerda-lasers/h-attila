@@ -1,0 +1,168 @@
+body {
+  width: 820px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0px auto;
+  color: #443C5B;
+
+}
+
+main {
+  padding: 50px 100px;
+  background-color: #DCD6CD;
+}
+
+h1 {
+  font-size: 22px;
+}
+
+.section-1 h1 {
+  font-size: 16px;
+  padding: 10px;
+  color: white;
+  background-color: #938C97;
+  border-radius: 4px;
+  font-weight: normal;
+}
+
+/* elso lap felso resze */
+.section-1 {
+  display: flex;
+  flex-wrap: nowrap;
+
+}
+
+/* elso lap bal-jobb hasab */
+.section-1-left, .section-1-right {
+  flex: 0 0 300px;
+  margin-right: 20px;
+}
+
+.hasabok {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.form-col1, .form-col2 {
+  flex: 1 1 120px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  padding-right: 25px;
+}
+
+input[type="text"], input[type="input"], input[type="email"], input[textarea], input[type="file"], select {
+  width: 94%;
+  height: 22px;
+  padding: 6px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  display: inline;
+  color: #A1A1A1;
+}
+
+input[type="input"] {
+  width: 60%
+}
+
+input[type="checkbox"] {
+  padding: 6px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+input[name="brand"] + label {
+  width: 85px;
+  display:inline-block;
+}
+
+.user-terms label {
+  width: 200px;
+}
+
+.user-terms {
+  margin: 20px 0px;
+}
+
+input[type="radio"] {
+  margin-top: 17px;
+}
+
+p {
+  font-size: 13px;
+  color: #A1A1A1;
+}
+
+textarea {
+  width: 608px;
+  color: #A1A1A1;
+  padding: 8px;
+  margin: 8px 0px;
+  border-radius: 4px;
+}
+
+.footer-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.buttons {
+  flex 0 0 100px;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: 1px solid #A9A4AD;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #5D5771;
+  box-shadow: inset 0px -1px 1px #A09AA3;
+  background: -moz-linear-gradient(90deg, #E7E7E7 0%, #FFFFFF 100%); /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FFFFFF), color-stop(100%, #E7E7E7)); /* safari4+,chrome */
+  background: -webkit-linear-gradient(90deg, #E7E7E7 0%, #FFFFFF 100%); /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient(90deg, #E7E7E7 0%, #FFFFFF 100%); /* opera 11.10+ */
+  background: -ms-linear-gradient(90deg, #E7E7E7 0%, #FFFFFF 100%); /* ie10+ */
+  background: linear-gradient(0deg, #E7E7E7 0%, #FFFFFF 100%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#E7E7E7',GradientType=0 ); /* ie6-9 */
+}
+
+#save-button {
+  color: #E0DAD0;
+  background: -moz-linear-gradient(90deg, #312C42 0%, #504869 100%); /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #504869), color-stop(100%, #312C42)); /* safari4+,chrome */
+  background: -webkit-linear-gradient(90deg, #312C42 0%, #504869 100%); /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient(90deg, #312C42 0%, #504869 100%); /* opera 11.10+ */
+  background: -ms-linear-gradient(90deg, #312C42 0%, #504869 100%); /* ie10+ */
+  background: linear-gradient(0deg, #312C42 0%, #504869 100%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#504869', endColorstr='#312C42',GradientType=0 ); /* ie6-9 */
+}
+
+span::before {
+  content:"*";
+  color: red;
+  font-size: 16px;
+  vertical-align: text-top;
+}
+
+.file-upload label {
+  display: block;
+  margin-top: 20px;
+}
+
+a {
+  font-weight: normal;
+  color: #706F6E;
+}
+
+#select-button {
+  width: 100%;
+  font-size: 16px;
+  height: 36px;
+}

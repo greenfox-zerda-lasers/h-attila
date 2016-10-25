@@ -1,0 +1,48 @@
+body {
+  margin: 0px auto;
+  max-width: 540px;
+}
+
+header {
+  height: 100px;
+  background-color: aqua;
+}
+
+main {
+  display: flex;
+  height: 500px;
+  justify-content: space-between;
+
+}
+
+.navigation {
+  background-color: orange;
+  flex: 0 0 100px;
+}
+
+.main-content {
+  background-color: red;
+  flex: 0 1 300px;
+  position: relative;
+
+}
+
+.right-column {
+  background-color: purple;
+  flex: 0 0 100px;
+}
+
+footer {
+  height: 100px;
+  background-color: blue;
+
+}
+
+.box {
+  height: 50px;
+  width: 50px;
+  right: 50px;
+  bottom: 50px;
+  background-color: black;
+  position: absolute;
+}
