@@ -17,6 +17,157 @@ main {
   background-color: white;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* HEAD NAVIGATOR section */
+
+
+.insite-navigator {
+  display: block;
+  height: 80px;
+  margin-right: 10px;
+}
+
+.insite-navigator__top {
+  width: 100%;
+  height: 35px;
+  display: block;
+  text-align: right;
+  margin: 5px 10px 0px 0px;
+  background-color: white;
+}
+
+.insite-navigator__top a, .insite-navigator__top p {
+  font-size: 12px;
+  padding: 4px;
+  display: inline;
+}
+
+.insite-navigator__top p {
+  color: grey;
+}
+
+.insite-navigator__bottom {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,1);
+  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(246,246,246,1)));
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 100%);
+  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 100%);
+  background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 100%);
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=0 );
+
+}
+
+.insite-navigator__bottom a {
+  font-size: 13px;
+}
+
+.insite-navigator__bottom__article {
+  flex: 0 0 50px;
+  height: 45px;
+  padding-top: 14px;
+  text-align: center;
+  background-color: white;
+  border-style: solid;
+  border-color: #A7D7F9;
+  border-width: 0px 1px 0px 0px;
+}
+
+.insite-navigator__bottom__talk {
+  flex: 0 0 37px;
+  height: 45px;
+  padding-top: 14px;
+  text-align: center;
+  border-style: solid;
+  border-color: #A7D7F9;
+  border-width: 0px 1px 1px 0px;
+}
+
+.insite-navigator__bottom__spacer {
+  flex: 1 1 100%;
+  height: 45px;
+  text-align: center;
+  border-style: solid;
+  border-color: #A7D7F9;
+  border-width: 0px 1px 1px 0px;
+}
+
+.insite-navigator__bottom__read {
+  flex: 0 0 45px;
+  height: 45px;
+  padding-top: 14px;
+  text-align: center;
+  background-color: white;
+  border-style: solid;
+  border-color: #A7D7F9;
+  border-width: 0px 1px 0px 0px;
+}
+
+.insite-navigator__bottom__edit {
+  flex: 0 0 37px;
+  height: 45px;
+  padding-top: 14px;
+  text-align: center;
+  border-style: solid;
+  border-color: #A7D7F9;
+  border-width: 0px 1px 1px 0px;
+}
+
+.insite-navigator__bottom__view-histoy {
+  flex: 0 0 80px;
+  height: 45px;
+  padding-top: 14px;
+  text-align: center;
+  border-style: solid;
+  border-color: #A7D7F9;
+  border-width: 0px 1px 1px 0px;
+}
+
+.insite-navigator__bottom__search {
+  flex: 0 0 335px;
+  height: 45px;
+  padding-top: 14px;
+  text-align: center;
+  border-style: solid;
+  border-color: #A7D7F9;
+  border-width: 0px 0px 1px 0px;
+}
+
+#search {
+  width: 310px;
+  height: 25px;
+  color: #AAAAAA;
+  padding-left: 6px;
+  border: 1px solid #AAAAAA;
+  background: rgba(248,248,248,1);
+  background: -moz-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(255,255,255,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(248,248,248,1)), color-stop(100%, rgba(255,255,255,1)));
+  background: -webkit-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(255,255,255,1) 100%);
+  background: -ms-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(to bottom, rgba(248,248,248,1) 0%, rgba(255,255,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#ffffff', GradientType=0 );
+}
+
+
+/* NAVIGATION section */
+
+
+
 nav {
   flex: 0 0 150px;
   justify-content: flex-start;
@@ -34,11 +185,7 @@ nav ul {
 nav li {
   list-style-type: none;
   font-size: 12px;
-  margin: 5px 0px;
-}
-
-nav li a {
-    text-decoration: none;
+  margin: 2px 0px;
 }
 
 nav img {
@@ -57,7 +204,114 @@ section > ul {
 }
 
 
+
+
 /* MAIN section */
+
+.image-container {
+  float:right;
+  position:relative;
+  display: inline-block;
+  height: 750px;
+}
+
+.bibliography {
+  width: 270px;
+  background-color: #F9F9F9;
+  border: 1px solid #AAAAAA;
+  float: right;
+}
+
+.bibliography img {
+  width: 220px;
+  height: 275px;
+  margin-left: 25px;
+}
+
+.bibliography h1 {
+  text-align: center;
+  font-size: 16px;
+  padding: 0px;
+  margin: 5px 0px;
+  border: 0px;
+  font-family: "Helvetica", sans-serif;
+}
+
+.bibliography p {
+  text-align: center;
+  font-size: 13px;
+  padding: 0px;
+  margin: 2px 0px;
+}
+
+.hamilton-with-books, .hamilton-in-action, .hamilton-1989 {
+  width: 230px;
+  background-color: #F9F9F9;
+  border: 1px solid #AAAAAA;
+  padding: 4px;
+  margin: 15px 0px 0px 15px;
+}
+
+.hamilton-with-books img {
+  width: 220px;
+  height: 275px;
+  border: 1px solid #AAAAAA;
+}
+
+.hamilton-in-action img {
+  width: 220px;
+  height: 175px;
+  border: 1px solid #AAAAAA;
+}
+
+.hamilton-1989 {
+  float:right;
+  width: 185px;
+  background-color: #F9F9F9;
+  border: 1px solid #AAAAAA;
+  padding: 4px;
+  margin: 15px 0px 0px 15px;
+}
+
+.hamilton-1989 img {
+  width: 175px;
+  height: 235px;
+  border: 1px solid #AAAAAA;
+}
+
+.hamilton-with-books p, .hamilton-in-action p, .hamilton-1989 p {
+  text-align: left;
+  font-size: 13px;
+  padding: 0px;
+  margin: 2px 2px;
+}
+
+.hamilton-in-action {
+  position: absolute;
+  top: 420px;
+  left: 0px;
+}
+
+table {
+  font-size: 13px;
+  font-weight: normal;
+  padding-left: 5px;
+
+
+}
+
+th {
+  font-weight: normal;
+  vertical-align: top;
+  text-align: left;
+  padding: 5px 0px 0px 2px;
+  margin: 0px;
+}
+
+th:first-child {
+    font-weight: bold;
+}
+
 
 .head-navigator {
   border-bottom: 1px solid #D8D8D8;
@@ -99,7 +353,7 @@ main p, main blockquote, li {
   line-height: 1.6em;
 }
 
-ol {
+.references ol {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -112,4 +366,30 @@ main .references li {
   font-size: 12px;
   width: 350px;
   margin-left: 30px;
+}
+
+.inside-navigation {
+  width: 125px;
+  display: block;
+  border: 1px solid #AAAAAA;
+  background-color: #F9F9F9;
+  margin: 10px 0px 20px 0px;
+
+}
+
+.inside-navigation ol {
+  padding: 0px;
+  margin: 5px 0px;
+}
+
+.inside-navigation li {
+  margin: 3px 0px 0px 20px;
+  font-size: 13px;
+}
+
+.inside-navigation h1 {
+  font-size: 14px;
+  font-family: "Helvetica", sans-serif;
+  padding: 10px 0px 0px 10px;
+  border: 0px;
 }
