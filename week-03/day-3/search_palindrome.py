@@ -1,4 +1,5 @@
-# this function search and print the palindromes from the input text
+# output = search_palindromes('dog goat dad duck doodle never')
+# print(output) # it prints: ['og go', ' dad ', 'd d', 'dood', 'eve']
 
 def search_palindromes(text):
     range = 1
@@ -11,6 +12,7 @@ def search_palindromes(text):
         found = True
 
         while found:
+
             # check we're in the string
             if (akt_pos - range) >= 0 and (akt_pos + range) < (len(text)):
 
@@ -44,7 +46,6 @@ def search_palindromes(text):
         akt_pos += 1
 
     return palindrome
-
 
 
 output = search_palindromes('dog goat dad duck doodle never')
