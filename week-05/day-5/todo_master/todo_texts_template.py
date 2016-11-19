@@ -7,3 +7,5 @@ list_items_header = "\n  List ToDo elements\n=======================\n"
 data_file_not_found = ">>> Figyelem: Nem létező adatjájl....\n>>> Adatfájl létrehozva."
 data_file_unknown_read_error = ">>> HIBA: ismeretlen adatfájl hiba, fájl olvasás sikertelen."
 data_file_unknown_write_error = ">>> HIBA: ismeretlen adatfájl hiba, fájl írása sikertelen."
+
+new_todo_input_from_user = "Új elem felvétele: "

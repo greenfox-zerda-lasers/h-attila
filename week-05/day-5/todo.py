@@ -16,10 +16,10 @@ class MainLoop():
             if sys.argv[1] == '-l':                             # LIST elements
                 ListItems()
 
-
             if sys.argv[1] == '-a':                             # ADD element
                 print('ADD elements')
-                FileHandling.data_read_from_file(self)
+                my_data = FileHandling.data_read_from_file(self)
+                AddItem(my_data)
 
             if sys.argv[1] == '-r':                             # REMOVE element
                 print('REMOVE elements')
@@ -49,8 +49,11 @@ class ListItems():
 
 
 class AddItem():
-    pass
 
+    def __init__(self, my_data):
+
+        new_data = str(input(todo_texts.new_todo_input_from_user))
+        AddItem().append(new_data)
 
 class RemoveItem():
     pass
