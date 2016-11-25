@@ -7,8 +7,8 @@ class View:
     def __init__(self, game_board, hero):
 
         self.root = Tk()
-        self.canvas = Canvas(self.root, width=720, height=795, bg='black')
-        self.canvas_2 = Canvas(self.root, width=300, height=795, bg='white')
+        self.canvas = Canvas(self.root, width=720, height=720, bg='black')
+        self.canvas_2 = Canvas(self.root, width=300, height=720, bg='white')
         self.canvas.pack(side=LEFT)
         self.canvas_2.pack(side=RIGHT)
         self.game_board = game_board
@@ -29,6 +29,7 @@ class View:
         image_grave_stone = Image.open("images/grave_stone_5.jpg")
         image_coin = Image.open("images/coin.gif")
         image_key = Image.open("images/hero_key.jpg")
+        image_you_win = Image.open("images/you_win.jpeg")
 
         self.photo_floor = ImageTk.PhotoImage(image_floor)
         self.photo_wall = ImageTk.PhotoImage(image_wall)
@@ -44,11 +45,12 @@ class View:
         self.image_grave_stone = ImageTk.PhotoImage(image_grave_stone)
         self.image_coin = ImageTk.PhotoImage(image_coin)
         self.image_key = ImageTk.PhotoImage(image_key)
+        self.image_you_win = ImageTk.PhotoImage(image_you_win)
 
     def draw(self):
 
         self.canvas.delete('all')
-        self.text = self.canvas_2.create_text(180, 410, anchor="nw", fill="white", font="Arcade 25 italic bold", text=self.hero_old_score)
+        self.text = self.canvas_2.create_text(180, 380, anchor="nw", fill="white", font="Arcade 25 italic bold", text=self.hero_old_score)
 
         if self.hero.event['direction'] == 'up':
             photo_hero_face = self.photo_hero_up
@@ -59,7 +61,7 @@ class View:
         else:
             photo_hero_face = self.photo_hero_down
 
-        for j in range(11):
+        for j in range(10):
             for i in range(10):
                 if self.game_board[j][i] == 'W':
                     self.canvas.create_image(i*72, j*72, anchor=NW, image=self.photo_wall)
@@ -74,52 +76,57 @@ class View:
                     self.canvas.create_image(i * 72, j * 72, anchor=NW, image=self.photo_enemy)
                 elif self.game_board[j][i] == 'c':
                     self.canvas.create_image(i * 72, j * 72, anchor=NW, image=self.photo_floor)
-#                    self.canvas.create_image(i * 72, j * 72, anchor=NW, image=self.image_coin)
+                    self.canvas.create_image(i * 72, j * 72, anchor=NW, image=self.image_coin)
                 elif self.game_board[j][i] == '_':
                     self.canvas.create_image(i * 72, j * 72, anchor=NW, image=self.photo_floor)
 
-        self.text = self.canvas_2.create_text(70, 410, anchor="nw", fill="green", font="Arcade 25 italic bold", text="SCORE: ")
-        self.text = self.canvas_2.create_text(180, 410, anchor="nw", fill="green", font="Arcade 25 italic bold", text=self.hero.power['score'])
+        self.text = self.canvas_2.create_text(70, 380, anchor="nw", fill="green", font="Arcade 25 italic bold", text="SCORE: ")
+        self.text = self.canvas_2.create_text(180, 380, anchor="nw", fill="green", font="Arcade 25 italic bold", text=self.hero.power['score'])
         self.hero_old_score = self.hero.power['score']
 
 
     def mainloop(self):
         self.canvas.mainloop()
 
-    def draw_info_screen(self, enemy):
+    def draw_info_screen(self, enemy, win=False):
 
         self.canvas_2.delete('all')
-        self.text = self.canvas_2.create_text(2, 20, anchor="nw", fill="blue", font="Arcade 65 italic bold", text="HERO GAME")
-        self.canvas_2.create_image(35, 90, anchor=NW, image=self.hero_profile)
+        self.win = win
 
-        self.text = self.canvas_2.create_text(70, 330, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="HEATLH: ")
-        self.text = self.canvas_2.create_text(70, 350, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="STRIKE: ")
-        self.text = self.canvas_2.create_text(70, 370, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="DEFEND: ")
-        self.text = self.canvas_2.create_text(70, 390, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="LEVEL: ")
+        self.text = self.canvas_2.create_text(2, 10, anchor="nw", fill="blue", font="Arcade 65 italic bold", text="HERO GAME")
+        self.canvas_2.create_image(35, 60, anchor=NW, image=self.hero_profile)
 
-        self.text = self.canvas_2.create_text(180, 330, anchor="nw", fill="red", font="Arcade 25 italic bold", text=self.hero.power['health'])
-        self.text = self.canvas_2.create_text(180, 350, anchor="nw", fill="green", font="Arcade 25 italic bold", text=self.hero.power['strike'])
-        self.text = self.canvas_2.create_text(180, 370, anchor="nw", fill="green", font="Arcade 25 italic bold", text=self.hero.power['defend'])
-        self.text = self.canvas_2.create_text(180, 390, anchor="nw", fill="green", font="Arcade 25 italic bold", text=self.hero.power['level'])
+        self.text = self.canvas_2.create_text(70, 300, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="HEATLH: ")
+        self.text = self.canvas_2.create_text(70, 320, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="STRIKE: ")
+        self.text = self.canvas_2.create_text(70, 340, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="DEFEND: ")
+        self.text = self.canvas_2.create_text(70, 360, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="LEVEL: ")
+
+        self.text = self.canvas_2.create_text(180, 300, anchor="nw", fill="red", font="Arcade 25 italic bold", text=self.hero.power['health'])
+        self.text = self.canvas_2.create_text(180, 320, anchor="nw", fill="green", font="Arcade 25 italic bold", text=self.hero.power['strike'])
+        self.text = self.canvas_2.create_text(180, 340, anchor="nw", fill="green", font="Arcade 25 italic bold", text=self.hero.power['defend'])
+        self.text = self.canvas_2.create_text(180, 360, anchor="nw", fill="green", font="Arcade 25 italic bold", text=self.hero.power['level'])
 
         if self.hero.has_key:
-            self.canvas_2.create_image(110, 420, anchor=NW, image=self.image_key)
+            self.canvas_2.create_image(110, 380, anchor=NW, image=self.image_key)
 
-        if not self.first_run:
+        if self.win:
+            self.canvas_2.create_image(25, 460, anchor=NW, image=self.image_you_win)
+        elif not self.first_run:
             if enemy.power['health'] <= 0:
-                self.canvas_2.create_image(15, 490, anchor=NW, image=self.image_grave_stone)
+                self.canvas_2.create_image(50, 460, anchor=NW, image=self.image_grave_stone)
                 enemy.power['health'] = 0
             else:
-                self.canvas_2.create_image(15, 490, anchor=NW, image=self.image_enemy_profile)
-                self.text = self.canvas_2.create_text(70, 710, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="HEATLH: ")
-                self.text = self.canvas_2.create_text(70, 730, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="STRIKE: ")
-                self.text = self.canvas_2.create_text(70, 750, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="DEFEND: ")
-                self.text = self.canvas_2.create_text(70, 770, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="LEVEL: ")
+                if not self.win:
+                    self.canvas_2.create_image(35, 450, anchor=NW, image=self.image_enemy_profile)
+                    self.text = self.canvas_2.create_text(70, 640, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="HEATLH: ")
+                    self.text = self.canvas_2.create_text(70, 660, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="STRIKE: ")
+                    self.text = self.canvas_2.create_text(70, 680, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="DEFEND: ")
+                    self.text = self.canvas_2.create_text(70, 700, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="LEVEL: ")
+                    self.text = self.canvas_2.create_text(180, 640, anchor="nw", fill="red", font="Arcade 25 italic bold", text=enemy.power['health'])
+                    self.text = self.canvas_2.create_text(180, 660, anchor="nw", fill="green", font="Arcade 25 italic bold", text=enemy.power['strike'])
+                    self.text = self.canvas_2.create_text(180, 680, anchor="nw", fill="green", font="Arcade 25 italic bold", text=enemy.power['defend'])
+                    self.text = self.canvas_2.create_text(180, 700, anchor="nw", fill="green", font="Arcade 25 italic bold", text=enemy.power['level'])
 
-                self.text = self.canvas_2.create_text(180, 710, anchor="nw", fill="red", font="Arcade 25 italic bold", text=enemy.power['health'])
-                self.text = self.canvas_2.create_text(180, 730, anchor="nw", fill="green", font="Arcade 25 italic bold", text=enemy.power['strike'])
-                self.text = self.canvas_2.create_text(180, 750, anchor="nw", fill="green", font="Arcade 25 italic bold", text=enemy.power['defend'])
-                self.text = self.canvas_2.create_text(180, 770, anchor="nw", fill="green", font="Arcade 25 italic bold", text=enemy.power['level'])
         self.first_run = False
 
         self.canvas_2.update()

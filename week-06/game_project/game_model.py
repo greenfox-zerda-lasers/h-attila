@@ -1,4 +1,5 @@
 import random
+import game_map
 
 
 class Character:
@@ -17,6 +18,7 @@ class Character:
 
         self.max_power = {
             "health" : 0,
+            "max_health" : 0,
             "defend" : 0,
             "strike" : 0
         }
@@ -36,9 +38,10 @@ class Hero(Character):
     def __init__(self, x, y, letter):
         super().__init__(x, y, letter)
         self.power = {
-            "health": 20+random.randint(1, 6)+random.randint(1, 6)+random.randint(1, 6),
-            "defend": random.randint(1, 6)+random.randint(1, 6),
-            "strike": 2 + random.randint(1, 6),
+            "health": 30+random.randint(1,6)+random.randint(1,6)+random.randint(1,6),
+            "max_health" : 50,
+            "defend": 5 + random.randint(1,6)+random.randint(1,6),
+            "strike": 1 + random.randint(3,6),
             "level" : 1,
             "score" : 0
         }
@@ -53,9 +56,10 @@ class Enemy(Character):
         self.active = False
 
         self.power = {
-            "health": 2 * random.randint(1 ,6),
-            "defend": random.randint(1 ,6),
-            "strike": random.randint(1 ,6),
+            "health": 12 + random.randint(1,6),
+            "max_health" : 15,
+            "defend": random.randint(1,6),
+            "strike": random.randint(1,6),
             "level" : 1
         }
 
@@ -66,9 +70,10 @@ class TheBigBoss(Character):
         super().__init__(x, y, letter)
 
         self.power = {
-            "health": 2 * random.randint(1 ,6) + random.randint(1 ,6),
-            "defend": random.randint(1 ,6) + random.randint(1 ,6),
-            "strike": random.randint(1 ,6) + 5,
+            "health": 2 * random.randint(1,6) + random.randint(1,6) + 10,
+            "max_health" : 30,
+            "defend": random.randint(1,6) + random.randint(1,6),
+            "strike": random.randint(1,6) + 5,
             "level" : 1
         }
 
@@ -128,7 +133,7 @@ class Move:
         character.event['move_counter'] += 1
 
     def down_move(self, character):
-        if character.event['y'] < 10 and self.game_board[(character.event['y']+1)][character.event['x']] not in ['H', 'W', '0', '1', '2', '3']:
+        if character.event['y'] < 9 and self.game_board[(character.event['y']+1)][character.event['x']] not in ['H', 'W', '0', '1', '2', '3']:
             if self.game_board[(character.event['y']+1)][character.event['x']] == 'c' and character.event['sign'] == 'H':
                 self.hero.power['score'] += 10
             self.game_board[character.event['y']][character.event['x']] = '_'
@@ -137,7 +142,7 @@ class Move:
             character.event['can_move'] = True
         else:
             character.event['can_move'] = False
-            if character.event['y'] < 10 and character.event['sign'] == 'H' and self.game_board[(character.event['y']+1)][character.event['x']] in ['0', '1', '2', '3']:
+            if character.event['y'] < 9 and character.event['sign'] == 'H' and self.game_board[(character.event['y']+1)][character.event['x']] in ['0', '1', '2', '3']:
                 character.event['battle_with'] = int(self.game_board[(character.event['y']+1)][character.event['x']])
         character.event['direction'] = 'down'
         character.event['move_counter'] += 1
@@ -170,30 +175,30 @@ class Battle:
 
     def battle(self, enemy):
         self.enemy = enemy
-        print('attacker:', self.hero.power, 'defender:', self.enemy.power)
+
+        if self.enemy.power['defend'] >= self.hero.power['strike']:
+            self.enemy.power['defend'] = self.hero.power['strike'] - 2
+        if self.enemy.power['defend'] >= self.hero.power['strike']:
+            self.enemy.power['defend'] = self.hero.power['strike'] - 2
+
         if self.hero.power['strike'] + 2*random.randint(1,6) > self.enemy.power['defend']:
             self.enemy.power['health'] = self.enemy.power['health'] + self.enemy.power['defend'] - self.hero.power['strike']
-            print('Successful hit! Attacker:', self.hero.power, 'defender:', self.enemy.power)
-        else:
-            print('Attack failed! Attacker:', self.hero.power, 'defender:', self.enemy.power)
-
 
         if self.enemy.power['health'] <= 0:
-            print('Battle WIN, enemy dies! Attacker:', self.hero.power, 'defender:', self.enemy.power)
             self.hero.power['health'] += random.randint(1,6)
-            self.hero.power['defend'] += random.randint(1,6)
-            self.hero.power['strike'] += random.randint(1,6)
+            if self.hero.power['health'] > self.hero.power['max_health']:
+                self.hero.power['health'] = self.hero.power['max_health']
+            self.hero.power['defend'] += random.randint(2,5)
+            self.hero.power['strike'] += random.randint(2,5)
             self.hero.power['level'] += 1
             if self.enemy.has_key:
                 self.hero.has_key = True
-                print('HERO HAS THE KEY!')
-            print('Hero level up! Attacker:', self.hero.power, 'defender:', self.enemy.power)
             self.game_board[self.enemy.event['y']][self.enemy.event['x']] = '_'
-
+            if self.hero.has_key and self.enemy_list[0].power['health'] <= 0:
+                return True
         else:
-            print('Attack back!')
             if self.enemy.power['strike'] + 2*random.randint(1,6) > self.hero.power['defend']:
-                self.hero.power['health'] = self.hero.power['health'] + self.hero.power['defend'] - self.enemy.power['strike']
-                print('Successful hit! Attacker:', self.enemy.power, 'defender:', self.hero.power)
-            else:
-                print('Attack failed! Attacker:', self.enemy.power, 'defender:', self.hero.power)
+                if self.hero.power['defend'] - self.enemy.power['strike'] < 0:
+                    self.hero.power['health'] = self.hero.power['health'] + self.hero.power['defend'] - self.enemy.power['strike']
+                else:
+                    self.hero.power['health'] -= 2

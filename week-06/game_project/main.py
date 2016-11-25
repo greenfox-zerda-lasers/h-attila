@@ -13,7 +13,7 @@ class GameMainControl:
 
         self.enemy_0 = game_model.TheBigBoss(0, 6, '0')
         self.enemy_1 = game_model.Enemy(0, 0, '1', True)
-        self.enemy_2 = game_model.Enemy(4, 0, '2', False)
+        self.enemy_2 = game_model.Enemy(7, 6, '2', False)
         self.enemy_3 = game_model.Enemy(4, 4, '3', False)
 
         self.enemy_list = []
@@ -38,8 +38,10 @@ class GameMainControl:
     def left_key_detected(self, event):
         self.move.left_move(self.hero)
         if self.hero.event['battle_with'] != 'none':
-            self.battle.battle(self.enemy_list[self.hero.event["battle_with"]])
-            self.view.draw_info_screen(self.enemy_list[self.hero.event["battle_with"]])
+            if self.battle.battle(self.enemy_list[self.hero.event["battle_with"]]):
+                self.view.draw_info_screen(self.enemy_0, True)
+            else:
+                self.view.draw_info_screen(self.enemy_list[self.hero.event["battle_with"]])
             self.hero.event['battle_with'] = 'none'
         if self.hero.event['move_counter'] % 2 == 0:
             self.enemy_move()
@@ -48,8 +50,10 @@ class GameMainControl:
     def right_key_detected(self, event):
         self.move.right_move(self.hero)
         if self.hero.event['battle_with'] != 'none':
-            self.battle.battle(self.enemy_list[self.hero.event["battle_with"]])
-            self.view.draw_info_screen(self.enemy_list[self.hero.event["battle_with"]])
+            if self.battle.battle(self.enemy_list[self.hero.event["battle_with"]]):
+                self.view.draw_info_screen(self.enemy_0, True)
+            else:
+                self.view.draw_info_screen(self.enemy_list[self.hero.event["battle_with"]])
             self.hero.event['battle_with'] = 'none'
         if self.hero.event['move_counter'] % 2 == 0:
             self.enemy_move()
@@ -58,8 +62,10 @@ class GameMainControl:
     def up_key_detected(self, event):
         self.move.up_move(self.hero)
         if self.hero.event['battle_with'] != 'none':
-            self.battle.battle(self.enemy_list[self.hero.event["battle_with"]])
-            self.view.draw_info_screen(self.enemy_list[self.hero.event["battle_with"]])
+            if self.battle.battle(self.enemy_list[self.hero.event["battle_with"]]):
+                self.view.draw_info_screen(self.enemy_0, True)
+            else:
+                self.view.draw_info_screen(self.enemy_list[self.hero.event["battle_with"]])
             self.hero.event['battle_with'] = 'none'
         if self.hero.event['move_counter'] % 2 == 0:
             self.enemy_move()
@@ -69,8 +75,10 @@ class GameMainControl:
     def down_key_detected(self, event):
         self.move.down_move(self.hero)
         if self.hero.event['battle_with'] != 'none':
-            self.battle.battle(self.enemy_list[self.hero.event["battle_with"]])
-            self.view.draw_info_screen(self.enemy_list[self.hero.event["battle_with"]])
+            if self.battle.battle(self.enemy_list[self.hero.event["battle_with"]]):
+                self.view.draw_info_screen(self.enemy_0, True)
+            else:
+                self.view.draw_info_screen(self.enemy_list[self.hero.event["battle_with"]])
             self.hero.event['battle_with'] = 'none'
         if self.hero.event['move_counter'] % 2 == 0:
             self.enemy_move()
