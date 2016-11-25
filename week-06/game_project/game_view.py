@@ -28,6 +28,7 @@ class View:
         image_hero_profile = Image.open("images/hero_profile.jpeg")
         image_grave_stone = Image.open("images/grave_stone_5.jpg")
         image_coin = Image.open("images/coin.gif")
+        image_key = Image.open("images/hero_key.jpg")
 
         self.photo_floor = ImageTk.PhotoImage(image_floor)
         self.photo_wall = ImageTk.PhotoImage(image_wall)
@@ -42,6 +43,7 @@ class View:
         self.hero_profile = ImageTk.PhotoImage(image_hero_profile)
         self.image_grave_stone = ImageTk.PhotoImage(image_grave_stone)
         self.image_coin = ImageTk.PhotoImage(image_coin)
+        self.image_key = ImageTk.PhotoImage(image_key)
 
     def draw(self):
 
@@ -100,21 +102,24 @@ class View:
         self.text = self.canvas_2.create_text(180, 370, anchor="nw", fill="green", font="Arcade 25 italic bold", text=self.hero.power['defend'])
         self.text = self.canvas_2.create_text(180, 390, anchor="nw", fill="green", font="Arcade 25 italic bold", text=self.hero.power['level'])
 
+        if self.hero.has_key:
+            self.canvas_2.create_image(110, 420, anchor=NW, image=self.image_key)
+
         if not self.first_run:
             if enemy.power['health'] <= 0:
-                self.canvas_2.create_image(15, 470, anchor=NW, image=self.image_grave_stone)
+                self.canvas_2.create_image(15, 490, anchor=NW, image=self.image_grave_stone)
                 enemy.power['health'] = 0
             else:
-                self.canvas_2.create_image(15, 470, anchor=NW, image=self.image_enemy_profile)
-                self.text = self.canvas_2.create_text(70, 700, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="HEATLH: ")
-                self.text = self.canvas_2.create_text(70, 720, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="STRIKE: ")
-                self.text = self.canvas_2.create_text(70, 740, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="DEFEND: ")
-                self.text = self.canvas_2.create_text(70, 760, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="LEVEL: ")
+                self.canvas_2.create_image(15, 490, anchor=NW, image=self.image_enemy_profile)
+                self.text = self.canvas_2.create_text(70, 710, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="HEATLH: ")
+                self.text = self.canvas_2.create_text(70, 730, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="STRIKE: ")
+                self.text = self.canvas_2.create_text(70, 750, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="DEFEND: ")
+                self.text = self.canvas_2.create_text(70, 770, anchor="nw", fill="blue", font="Arcade 25 italic bold", text="LEVEL: ")
 
-                self.text = self.canvas_2.create_text(180, 700, anchor="nw", fill="red", font="Arcade 25 italic bold", text=enemy.power['health'])
-                self.text = self.canvas_2.create_text(180, 720, anchor="nw", fill="green", font="Arcade 25 italic bold", text=enemy.power['strike'])
-                self.text = self.canvas_2.create_text(180, 740, anchor="nw", fill="green", font="Arcade 25 italic bold", text=enemy.power['defend'])
-                self.text = self.canvas_2.create_text(180, 760, anchor="nw", fill="green", font="Arcade 25 italic bold", text=enemy.power['level'])
+                self.text = self.canvas_2.create_text(180, 710, anchor="nw", fill="red", font="Arcade 25 italic bold", text=enemy.power['health'])
+                self.text = self.canvas_2.create_text(180, 730, anchor="nw", fill="green", font="Arcade 25 italic bold", text=enemy.power['strike'])
+                self.text = self.canvas_2.create_text(180, 750, anchor="nw", fill="green", font="Arcade 25 italic bold", text=enemy.power['defend'])
+                self.text = self.canvas_2.create_text(180, 770, anchor="nw", fill="green", font="Arcade 25 italic bold", text=enemy.power['level'])
         self.first_run = False
 
         self.canvas_2.update()

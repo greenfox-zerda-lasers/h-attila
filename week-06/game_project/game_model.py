@@ -27,6 +27,8 @@ class Character:
             "strike": 0,
             "level" : 1
         }
+        self.has_key = False
+
 
 
 class Hero(Character):
@@ -40,7 +42,6 @@ class Hero(Character):
             "level" : 1,
             "score" : 0
         }
-        self.has_key = False
 
 
 class Enemy(Character):
