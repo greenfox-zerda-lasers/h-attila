@@ -3,7 +3,6 @@
 import model
 import view
 import map
-import random
 
 
 class mainGameLoop:
@@ -28,6 +27,13 @@ class mainGameLoop:
             self.skeletonList[i].setStartPos()
         self.skeletonList[0].key = True
 
+        self.drawing.map()
+        for i in range(len(self.skeletonList)):
+            self.drawing.skeleton(self.skeletonList[i])
+        self.drawing.boss(self.boss)
+        self.drawing.hero(self.hero)
+        self.drawing.infoScreen()
+
         self.drawing.root.bind('<Left>', self.keyDetect)
         self.drawing.root.bind('<Right>', self.keyDetect)
         self.drawing.root.bind('<Up>', self.keyDetect)
@@ -37,28 +43,34 @@ class mainGameLoop:
         self.drawing.mainloop()
 
     def keyDetect(self, keyEvent):
-        self.hero.moveCounter += 1
-        if keyEvent.keysym == 'Up':
-            self.hero.move('Up')
-            self.move()
-        elif keyEvent.keysym == 'Down':
-            self.hero.move('Down')
-            self.move()
-        elif keyEvent.keysym == 'Left':
-            self.hero.move('Left')
-            self.move()
-        elif keyEvent.keysym == 'Right':
-            self.hero.move('Right')
+        if keyEvent.keysym in ['Up', 'Down', 'Left', 'Right']:
+            self.hero.direction = keyEvent.keysym
+            self.hero.moveCounter += 1
             self.move()
         elif keyEvent.keysym == 'space':
-            pass
+            print('fight!')
+            self.hero.fightSkeleton(self.skeletonList)
+            self.hero.fightBoss(self.boss)
 
     def move(self):
+        self.hero.heroMove()
+        if self.hero.moveCounter % 2 == 0:
+            if self.boss.he >= 0:
+                self.boss.enemyMove()
+            for i in range(len(self.skeletonList)):
+                self.skeletonList[i].enemyMove()
         self.drawing.map()
-        self.drawing.boss(self.boss)
-        self.drawing.hero(self.hero)
         for i in range(len(self.skeletonList)):
             self.drawing.skeleton(self.skeletonList[i])
+        if self.boss.he >= 0:
+            self.drawing.boss(self.boss)
+        self.drawing.hero(self.hero)
+        self.drawing.infoScreen()
+        self.checkWin()
+
+    def checkWin(self):
+        if self.boss.he <= 0 and self.hero.key:
+            print('hello, gyoztem!')
 
 
 ################################ Main loop starts here ################################

@@ -3,7 +3,7 @@ numbers = [3, 4, 5, 6, 7]
 
 def reverse_list(list):
     newlist = []
-    for i in reversed(list):
+    for i in list[::-1]:
         newlist.append(i)
     print(newlist)
 

@@ -8,16 +8,14 @@ students = [
 # then returns how many candies are own by students
 # under 10
 
-def candi(input):
-        list_of_students = []
-        owned_candies = 0
-        print("*** A diakok listaja ***")
-        for i in input:
-                list_of_students = i
-                print("nev:", list_of_students['name'], "eletkor: ", list_of_students['age'], "cukorkak: ", list_of_students['candies'])
-                if list_of_students['age'] < 10:
-                        owned_candies += list_of_students['candies']
-        print("cukorkak szama 10 ev alatt:", owned_candies)
 
-candi(students)
+def candi(inData):
+    result = 0
+    for i in range(len(inData)):
+        if inData[i]['age'] < 10:
+            result += inData[i]['candies']
+    return result
+
+
+print(candi(students))
 
