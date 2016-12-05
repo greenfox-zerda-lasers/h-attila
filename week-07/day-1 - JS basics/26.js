@@ -5,3 +5,10 @@ var out = 6;
 // if the last and the first letter of the string
 // are the same double the variable
 // called out, if not half it
+if (y.slice(-1) === y[0]){
+  out*=2
+}
+else{
+  out/=2
+}
+console.log(out);
