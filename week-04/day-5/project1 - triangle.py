@@ -25,6 +25,8 @@ def magic_triangles(x, y, size):
     my_canvas.create_polygon(x, y, x + size / 2, y + size * math.sqrt(3) / 2, x + size, y, fill='white', outline=rgb(), width='1')
     my_canvas.update()
 
+    my_canvas.create_rectangle()
+
     if size > 8:
 
         magic_triangles(x, y, size/2)

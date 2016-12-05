@@ -6,9 +6,10 @@ def dividing_ten_by(number):
     try:
         return 10 / number
     except ZeroDivisionError:
-        return('fail')
+        return('Zero division')
     except TypeError:
-        return('fail')
+        return('Type error')
 
 
 print(dividing_ten_by('alma'))
+print(dividing_ten_by(0))

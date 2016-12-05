@@ -11,9 +11,9 @@ students = [
 
 def candi(inData):
     result = 0
-    for i in range(len(inData)):
-        if inData[i]['age'] < 10:
-            result += inData[i]['candies']
+    for item in inData:
+        if item['age'] < 10:
+            result += item['candies']
     return result
 
 
