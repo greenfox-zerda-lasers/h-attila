@@ -4,13 +4,18 @@
 // and calls the function with each element of the array as parameter
 // so it should call the array 3 times if the array has 3 elements
 
-var newArray = ['1', '2', '3'];
+newArray = [1, 2, 3, 4, 5];
 
-function eachArray(myArray, myFunction){
-  myArray.forEach(function(item, index, arr) {
-    myFunction(item, index, arr);
+function each(arr, myFunction){
+  result = [];
+  arr.forEach(function(item){
+    result.push(myFunction(item));
   });
+  return result;
 }
 
+function dubler(number){
+  return number * 2;
+}
 
-eachArray(newArray, console.log);
+console.log(each(newArray, dubler));
