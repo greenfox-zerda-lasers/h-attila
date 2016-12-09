@@ -8,11 +8,6 @@ var numbers = [2.4, 3.5, 1.7, 3.3, 1.2];
 
 
 function arrayMaker(arr){
-  console.log(arr.filter(function(item) {
-    return item > 2
-  }).map(function(i) {
-    return Math.round(i)
-  }));
-}
+  console.log(arr.filter(function(item) { return item > 2 } ).map(function(i) { return Math.round(i) }));}
 
 arrayMaker(numbers)
