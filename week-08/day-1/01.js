@@ -1,4 +1,3 @@
-
 // 'use strict';
 
 // Create a constructor for creating Animals.

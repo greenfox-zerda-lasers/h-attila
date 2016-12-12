@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict'
 
 // Create a constructor for creating Rectangles.
 // it should take two parameters: the sides of the rectangle

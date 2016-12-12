@@ -1,4 +1,4 @@
-// 'use strict';
+//'use strict';
 
 // Create a constructor for creating Rockets.
 // it should take one parameter: the consumption of the rocket

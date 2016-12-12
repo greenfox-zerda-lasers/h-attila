@@ -2,6 +2,7 @@
 // and one for creating Carriers,
 // based on the specification in the python exam: https://github.com/greenfox-academy/zerda-exam-python-retake
 
+
 function Aircraft(type) {
   this.ammo = 0;
   this.type = type;
