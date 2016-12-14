@@ -1,11 +1,21 @@
 var sendButton = document.querySelector('.send-button');
+var url = '';
+var movietitle = document.querySelector('#movietitle');
+var rating = document.querySelector('#rating');
+var username = document.querySelector('#username');
+
 sendButton.addEventListener('click', function(){
-  postToWeb();
+    var dataToWeb = {
+      MovieTitle :  movietitle.value,
+      Rating : rating.value,
+      Username : username.value
+    };
+    postToWeb(dataToWeb);
 });
 
-function postToWeb(){
-//  var httpRequest = new XMLHttpRequest();
-//  httpRequest.open("POST", 'https://sheetsu.com/apis/v1.0/7d4845a11814', true);
-//  httpRequest.send();
-  alert('posting in progress');
+function postToWeb(dataToWeb){
+  var postingToWeb = XMLHttpRequest;
+  postingToWeb.open('POST', url, true);
+  postingToWe.send(dataToWeb);
+  alert('data posted: ' + dataToWeb.MovieTitle + ', ' + dataToWeb.Rating + ', ' + dataToWeb.Username);
 }
