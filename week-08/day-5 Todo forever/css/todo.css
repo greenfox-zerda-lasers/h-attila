@@ -5,7 +5,7 @@ body {
 }
 
 main {
-  height: auto;
+  max-height: 950px;
   font-family: 'Lato', sans-serif;
   color: #9b9b9b;
   background-color: #f7f7f7;
@@ -62,6 +62,8 @@ ul {
   margin: 30px 0px 0px 60px;
   padding: 0px;
   width: 450px;
+  max-height: 550px;
+  overflow: scroll;
 }
 
 li {
