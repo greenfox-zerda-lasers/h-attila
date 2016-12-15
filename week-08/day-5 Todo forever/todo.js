@@ -3,12 +3,13 @@ var addButton = document.querySelector('.button');
 
 addButton.addEventListener('click', function(){
   var inputFieldText = document.querySelector('.inputField');
-  console.log(inputFieldText.value);
   app.add(inputFieldText.value);
 });
 
 // ***** APP object create *****
-function APP(){}
+function APP(){
+  this.todoText = '';
+}
 
 APP.prototype.open = function (){
   var httpRequest = new XMLHttpRequest();
@@ -24,12 +25,20 @@ APP.prototype.open = function (){
 
 APP.prototype.list = function(response){
   var todoListElement = document.querySelector('ul');
-  var todoText = "";
+  this.todoText = "";
   response.forEach(function(listItem){
-    todoText += '<li><div class="todo-text">' + listItem.text + '</div><div class="todo-dashbin"> </div><div class="todo-check"> </div></li>';
+    this.todoText += '<li><div class="todo-text">' + listItem.text + '</div><div class="todo-dashbin"> </div><div class="todo-check"> </div></li>';
+  }, this);
+  todoListElement.innerHTML = this.todoText;
+  
+  var checkBoxes = document.querySelectorAll('.todo-check');
+  checkBoxes.forEach(function(item, index){
+    if (response[index].completed === true){
+      item.style.backgroundImage = 'url("success_ok.svg")';
+    } else {
+      item.style.backgroundImage = 'url("oval.svg")';
+    }
   });
-  console.log(todoText);
-  todoListElement.innerHTML = todoText;
 };
 
 APP.prototype.update = function(){
@@ -37,11 +46,29 @@ APP.prototype.update = function(){
 };
 
 APP.prototype.add = function(item){
-  todoText += '<li><div class="todo-text">' + listItem.text + '</div><div class="todo-dashbin"> </div><div class="todo-check"> </div></li>';
+  dataToUpload = {};
+  dataToUpload.text = item;
+
+  var httpPost = new XMLHttpRequest();
+  httpPost.open('POST', 'https://mysterious-dusk-8248.herokuapp.com/todos');
+  httpPost.setRequestHeader('Content-Type', 'application/json');
+  httpPost.send(JSON.stringify(dataToUpload));
+  httpPost.onreadystatechange = function(){
+    if (httpPost.readyState === XMLHttpRequest.DONE){
+      app.open();
+    }
+  };
 };
 
-APP.prototype.delete = function(){
+APP.prototype.delete = function(item){
   console.log('delete');
+  dataToUpload = 'https://mysterious-dusk-8248.herokuapp.com/todos/' + item;
+
+  var httpPost = new XMLHttpRequest();
+  httpPost.open('DELETE', dataToUpload);
+  httpPost.setRequestHeader('Content-Type', 'application/json');
+  httpPost.send();
+  app.open();
 };
 
 // ***** START main function *****

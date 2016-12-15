@@ -5,7 +5,7 @@ body {
 }
 
 main {
-  height: 670px;
+  height: auto;
   font-family: 'Lato', sans-serif;
   color: #9b9b9b;
   background-color: #f7f7f7;
@@ -97,14 +97,6 @@ li:hover {
 
 .todo-check {
   flex: 0 0 40px;
-  background-image: url("../images/success_ok.svg");
-  background-size: 35px;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.todo-check:hover {
-  background-image: url("../images/oval.svg");
   background-size: 35px;
   background-repeat: no-repeat;
   background-position: center;
