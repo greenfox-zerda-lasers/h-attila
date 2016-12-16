@@ -1,16 +1,16 @@
 body {
   margin: 20px auto;
-  background-color: #50e3c2;
+  background-color: #220F0D;
   width: 560px;
 }
 
 main {
   max-height: 950px;
   font-family: 'Lato', sans-serif;
-  color: #9b9b9b;
-  background-color: #f7f7f7;
+  color: #220F0D;
+  background-color: #E3550D;
   border-radius: 3px;
-  box-shadow: 5px 5px 10px #a6a6a6;
+  box-shadow: 5px 5px 20px #EFA019;
   padding: 5px;
 }
 
@@ -29,7 +29,7 @@ h1 {
   display: flex;
   border: 1px solid #9b9b9b;
   border-radius: 2px;
-  background-color: #df69e8;
+  background-color: #220F0D;
   padding: 0px;
 }
 
@@ -54,8 +54,8 @@ input[type=text] {
 }
 
 .button:hover {
-  background-color: #50e3c2;
-  color: #37404d;
+  background-color: #FCCB51;
+  color: #E3550D;
 }
 
 ul {
@@ -81,18 +81,17 @@ li:hover {
 
 .todo-text {
   flex: 0 0 370px;
-  max-width: 370px;
 }
 
 .todo-dashbin {
-  flex: 0 0 35px;
-  background-image: url("../images/garbage.svg");
-  background-size: 32px;
+  flex: 0 0 40px;
+  background-image: url("../images/garbage_1.svg");
+  background-size: 35px;
   background-repeat: no-repeat;
   background-position: center;
 }
 .todo-dashbin:hover {
-  background-image: url("../images/garbage_up.svg");
+  background-image: url("../images/garbage_up_1.svg");
   background-size: 35px;
   background-repeat: no-repeat;
   background-position: center;
@@ -103,7 +102,11 @@ li:hover {
   background-size: 35px;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("../images/success_0.svg");
+  background-image: url("../images/success_1.svg");
+}
+
+.todo-check:hover {
+  background-image: url("../images/success_checked_1.svg");
 }
 
 .todo-checked {
@@ -111,15 +114,7 @@ li:hover {
   background-size: 35px;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("../images/success_checked_0.svg");
-}
-
-.todo-check:hover {
-  flex: 0 0 40px;
-  background-size: 35px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("../images/success_checked_0.svg");
+  background-image: url("../images/success_checked_1.svg");
 }
 
 .settings {
@@ -127,5 +122,5 @@ li:hover {
   width: 35px;
   background-size: 35px;
   background-repeat: no-repeat;
-  background-image: url("../images/settings.svg");
+  background-image: url("../images/settings_1.svg");
 }

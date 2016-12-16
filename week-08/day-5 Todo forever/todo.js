@@ -3,7 +3,9 @@ var addButton = document.querySelector('.button');
 
 addButton.addEventListener('click', function(){
   var inputFieldText = document.querySelector('.inputField');
-  app.add(inputFieldText.value);
+  var inputText = inputFieldText.value;
+  inputFieldText.value = '';
+  app.add(inputText);
 });
 
 // ***** APP object create *****
@@ -29,13 +31,16 @@ APP.prototype.list = function(response){
   response.forEach(function(listItem){
     this.todoText += '<li><div class="todo-text">' + listItem.text + '</div><div id="' + listItem.id + '" class="todo-dashbin"> </div><div id="' + listItem.id + '" class="todo-check"> </div></li>';
   }, this);
+
   todoListElement.innerHTML = this.todoText;
+
   var checkBoxes = document.querySelectorAll('.todo-check');
+
   checkBoxes.forEach(function(item, index){
-    if (response[index].completed === true){
-      item.style.backgroundImage = 'url("images/success_ok.svg")';
+    if (response[index].completed === false){
+      item.className = 'todo-check';
     } else {
-      item.style.backgroundImage = 'url("images/oval.svg")';
+      item.className = 'todo-checked';
     }
     item.addEventListener('click', function(){
       app.update(item.id, response[index].completed, response[index].text);
@@ -73,6 +78,7 @@ APP.prototype.update = function(id, state, text){
 APP.prototype.add = function(item){
   dataToUpload = {};
   dataToUpload.text = item;
+  console.log(item);
 
   var httpPost = new XMLHttpRequest();
   httpPost.open('POST', 'https://mysterious-dusk-8248.herokuapp.com/todos');
@@ -101,3 +107,18 @@ APP.prototype.delete = function(id){
 
 var app = new APP();
 app.open();
+
+var settingsMenu = document.querySelector('.settings');
+var stylesheet = document.querySelector('#stylesheet');
+var stylechecker = 0;
+
+
+settingsMenu.addEventListener('click', function(){
+  var styleList = [ "css/todo.css", "css/todo_1.css", "css/todo_2.css" ];
+  console.log(styleList[stylechecker], stylechecker);
+  stylechecker++;
+  if (stylechecker >= 3){
+    stylechecker = 0;
+  }
+  stylesheet.href=styleList[stylechecker];
+});
