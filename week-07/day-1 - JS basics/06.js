@@ -2,4 +2,6 @@
 
 var f = 16;
 // square root f's value
-console.log(Math.pow(f, 0.5));
+
+var squared = Math.sqrt(f, 2);
+console.log(squared);

@@ -1,15 +1,14 @@
 'use strict';
 
-var z = 100;
+var z = 13;
 // if z is between 10 and 20 print 'Sweet!'
 // if less than 10 print 'More!',
 // if more than 20 print 'Less!'
-if (10 < z && z < 20){
+
+if (z<20 && z>10){
   console.log('Sweet!');
-}
-else if(10 < z ){
+} else if (z<=10) {
   console.log('More!');
-}
-else{
+} else {
   console.log('Less!');
 }

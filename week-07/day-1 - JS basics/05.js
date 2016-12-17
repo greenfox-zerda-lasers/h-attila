@@ -2,4 +2,6 @@
 
 var e = 8;
 // cube e's value
-console.log(Math.pow(e, 3));
+
+var result = Math.pow(e, 3);
+console.log(result);

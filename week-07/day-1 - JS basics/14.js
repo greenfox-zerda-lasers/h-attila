@@ -5,6 +5,4 @@ var a = 2;
 var b = 3;
 
 // concat the product of a and b to the n string
-n += a;
-n += b;
-console.log(n);
+console.log(n+a+b);

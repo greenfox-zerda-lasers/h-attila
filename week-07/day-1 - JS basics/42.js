@@ -2,13 +2,12 @@
 
 // create a function that returns it's input factorial
 
-function myFactorial(inputNumber){
+function myFracrotial(number){
   var result = 1;
-  for (var i=1; i <= inputNumber; i++){
+  for (var i=1; i<=number; i++){
     result *= i;
   }
   return result;
 }
 
-
-console.log(myFactorial(5));
+console.log(myFracrotial(3));

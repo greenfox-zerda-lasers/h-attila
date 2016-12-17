@@ -2,4 +2,6 @@
 
 var c = 44;
 // double c's value
-console.log(c*2);
+
+c *= 2;
+console.log(c);
