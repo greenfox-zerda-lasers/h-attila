@@ -11,6 +11,9 @@
 
   <script>
     // Remove the king from the list.
+    var list = document.querySelector('ul');
+    var removableItem = document.querySelector('li');
+    list.removeChild(removableItem);
 
     // Fill the list based on the following list of objects:
     var planetData = [
@@ -43,7 +46,15 @@
     // only add the asteroids to the list.
     // each list item should have its category as a class
     // and its content as text content.
+    planetData.forEach(function(item, index){
+      if (item.asteroid){
+        var newItem = document.createElement('li');
+        newItem.innerHTML = planetData[index].content;
+        newItem.classList.add(planetData[index].category);
+        list.appendChild(newItem);
+      }
+    })
+
   </script>
-  <script src="createelement-4.js"></script>
 </body>
 </html>

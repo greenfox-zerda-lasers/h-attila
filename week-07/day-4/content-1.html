@@ -12,16 +12,25 @@
 
   <script>
     // 1. Alert the content of the heading.
+    var heading = document.querySelector('h1');
+    // alert(heading.innerHTML);
+    console.log(heading.innerHTML);
 
     // 2. Write the content of the first paragraph to the console.
+    var firstParagraph = document.querySelector('p');
+    console.log(firstParagraph.innerHTML);
 
     // 3. Alert the content of the second paragraph.
+    var secondParagraph = document.querySelector('.other');
+    console.log(secondParagraph.innerHTML);
 
     // 4. Replace the heading's content with 'New content'.
+    heading.innerHTML = 'New Content';
 
     // 5. Replace the last paragraph's content with the first paragraph's content.
+    var lastParagraph = document.querySelector('.result');
+    lastParagraph.innerHTML = firstParagraph.innerHTML;
 
   </script>
-  <script src="content-1.js"></script>
 </body>
 </html>

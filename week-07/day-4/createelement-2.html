@@ -11,9 +11,17 @@
 
   <script>
     // Remove the king from the list.
+    var list = document.querySelector('ul');
+    var listItem = document.querySelector('li')
+    list.removeChild(listItem);
 
     // Add 3 list items saying 'The Fox' to the list.
+    for (var i=0; i<3; i++){
+      var newListItem = document.createElement('li');
+      newListItem.innerHTML = 'The Fox';
+      list.appendChild(newListItem);
+    }
+
   </script>
-  <script src="createelement-2.js"></script>
 </body>
 </html>

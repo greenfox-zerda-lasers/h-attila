@@ -13,14 +13,22 @@
 
   <script>
     // Write the image's url to the console.
+    var image = document.querySelector('img');
+    console.log(image.src);
 
     // Replace the image with a picture of yourself.
+    image.setAttribute('src', 'http://www.myfitnessstudio.co.uk/wp-content/uploads/nickauger.jpg');
 
     // Make the link point to the Green Fox Academy website.
+    var link = document.querySelector('a');
+    link.setAttribute('href', 'http://www.greenfoxacademy.com/');
 
     // Disable the second button.
     // Replace its text with 'Don't click me!'.
+    var secondButton = document.querySelector('.this-one');
+    secondButton.setAttribute('disabled', true);
+    secondButton.innerHTML = "Don't click me!";
+    
   </script>
-  <script src="attribute-1.js"></script>
 </body>
 </html>

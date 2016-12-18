@@ -15,7 +15,11 @@
   <script>
     // replace the list items' content with items from this list:
     // ['apple', 'banana', 'cat', 'dog']
+    var list = ['apple', 'banana', 'cat', 'dog'];
+    var listItems = document.querySelectorAll('li');
+    listItems.forEach(function(item, index){
+      item.innerHTML = list[index];
+    });
   </script>
-  <script src="content-4.js"></script>
 </body>
 </html>

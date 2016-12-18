@@ -12,7 +12,11 @@
 
   <script>
     // fill every paragraph with the last one's content.
+    var firstParagraph = document.querySelector('.apple');
+    var paragraphs = document.querySelectorAll('p');
+    paragraphs.forEach(function(item){
+      item.innerHTML = firstParagraph.innerHTML;
+    });
   </script>
-  <script src="content-2.js"></script>
 </body>
 </html>

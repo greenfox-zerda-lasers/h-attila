@@ -11,9 +11,12 @@
 
   <script>
     // fill output1 with the first paragraph's content, text only.
+    var paragraphs = document.querySelectorAll('p');
+    paragraphs[1].innerText = paragraphs[0].innerText;
 
     // fill output2 with the first paragraph's content keeping the cat strong.
+    paragraphs[2].innerHTML = paragraphs[0].innerHTML;
+
   </script>
-  <script src="content-3.js"></script>
 </body>
 </html>

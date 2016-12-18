@@ -21,7 +21,11 @@
     // Create a script that replaces every h1 headline's content
     // with 'Green Fox Academy Conquers the World'.
     // Create a bookmarklet that does that on any website.
+    var headlines = document.querySelectorAll('h1');
+    console.log(headlines);
+    headlines.forEach(function(item){
+      item.innerHTML = 'Green Fox Academy Conquers the World';
+    })
   </script>
-  <script src="bookmarklet-1.js"></script>
 </body>
 </html>

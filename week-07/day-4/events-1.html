@@ -22,7 +22,11 @@
 
   <script>
     // Turn the party on and off by clicking the button.
+    var partyButton = document.querySelector('button');
+    var documentBody = document.querySelector('body');
+    partyButton.addEventListener('click', function(){
+      documentBody.classList.toggle('party');
+    })
   </script>
-  <script src="events-1.js"></script>
 </body>
 </html>
