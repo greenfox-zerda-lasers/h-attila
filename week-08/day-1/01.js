@@ -4,19 +4,16 @@
 // it should take one parameter: what the animal says
 // Every animal should have a method called say() that prints what the animal says
 
-function Animal(talk){
-  this.talk = talk;
+function Animal(sound){
+  this.says = function(){
+    console.log(sound);
+  };
 }
 
-Animal.prototype.says = function(){
-  console.log(this.talk);
-};
+var cat = new Animal('meaouh!');
+var dog = new Animal('vaouuh!');
+var partyCarrot = new Animal('Hello! I\'m a party parrot!');
 
-var parrot = new Animal('Hello, my name is party parrot!');
-parrot.says();
-
-var dog = new Animal('Wauw!')
-dog.says();
-
-var cat = new Animal('meaouh!')
 cat.says();
+dog.says();
+partyCarrot.says();

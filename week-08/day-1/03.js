@@ -8,33 +8,30 @@
 // Every rocket should have a method called launch() that launches the rocket
 // if it has enough fuel (more than its consumption)
 
+function Rocket(consumption){
+  this.consumption = consumption;
+  this.fuel = 0;
+  this.launchCounter = 0;
 
-function Rocket(consumptionPerLaunch){
-  this.consumptionPerLaunch = consumptionPerLaunch;
-  this.fuelAmount = 0;
-  this.launches = 0;
+  this.fill = function(amount){
+    this.fuel += amount;
+    console.log('Avaiable fuel: ' + this.fuel);
+  };
+
+  this.launch = function(){
+    if (this.fuel >= this.consumption){
+      this.fuel -= this.consumption;
+      this.launchCounter++;
+      console.log('Launch successfull! Fuel: ' + this.fuel + ', launches: ' + this.launchCounter);
+    } else {
+      console.log('Not enough fuel!');
+    }
+  };
 }
 
-Rocket.prototype.fill = function(fuelAmount){
-  this.fuelAmount += fuelAmount;
-  console.log('Successfull filling! Avaiable fuel:', this.fuelAmount);
-};
-
-Rocket.prototype.launch = function(){
-  if (this.fuelAmount >= this.consumptionPerLaunch){
-    this.launches++;
-    this.fuelAmount -= this.consumptionPerLaunch;
-    console.log('Launch the rocket! Remaining fuel: ' + this.fuelAmount + ', number of launches: ' + this.launches);
-  }
-  else {
-    console.log('Not enough fuel to launch!');
-  }
-};
-
-var myNewRocket_1 = new Rocket(1);
-myNewRocket_1.launch();
-myNewRocket_1.fill(3);
-myNewRocket_1.launch();
-myNewRocket_1.launch();
-myNewRocket_1.launch();
-myNewRocket_1.launch();
+var myRocket_1 = new Rocket(5);
+myRocket_1.launch();
+myRocket_1.fill(10);
+myRocket_1.launch();
+myRocket_1.launch();
+myRocket_1.launch();

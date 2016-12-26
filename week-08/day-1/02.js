@@ -5,23 +5,20 @@
 // Every rectangle should have a method called getArea() that returns its area
 // Every rectangle should have a method called getCircumference() that returns its circumference
 
-function Rectangle(a, b) {
-  this.a = a;
-  this.b = b;
-};
+function Rectangle(a, b){
+  this.getArea = function(){
+    return a*b;
+  };
+  this.getCircumference = function(){
+    return 2*(a+b);
+  };
+}
 
-Rectangle.prototype.getArea = function() {
-  return this.a * this.b;
-};
+var newRectangle_1 = new Rectangle(2, 3);
+var newRectangle_2 = new Rectangle(5, 10);
 
-Rectangle.prototype.getCircumference = function () {
-  return 2*(this.a + this.b);
-};
+console.log(newRectangle_1.getArea());
+console.log(newRectangle_1.getArea());
 
-var rect_1 = new Rectangle(10, 2);
-console.log(rect_1.getArea());
-console.log((rect_1.getCircumference()));
-
-var rect_2 = new Rectangle(10, 10);
-console.log(rect_2.getArea());
-console.log(rect_2.getCircumference());
+console.log(newRectangle_1.getCircumference());
+console.log(newRectangle_2.getCircumference());
