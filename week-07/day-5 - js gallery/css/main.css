@@ -1,0 +1,88 @@
+body {
+  margin: 0px auto;
+  max-width: 1000px;
+  background: rgba(219,219,219,1);
+  background: -moz-linear-gradient(left, rgba(219,219,219,1) 0%, rgba(246,246,246,1) 47%, rgba(219,219,219,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(219,219,219,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(219,219,219,1)));
+  background: -webkit-linear-gradient(left, rgba(219,219,219,1) 0%, rgba(246,246,246,1) 47%, rgba(219,219,219,1) 100%);
+  background: -o-linear-gradient(left, rgba(219,219,219,1) 0%, rgba(246,246,246,1) 47%, rgba(219,219,219,1) 100%);
+  background: -ms-linear-gradient(left, rgba(219,219,219,1) 0%, rgba(246,246,246,1) 47%, rgba(219,219,219,1) 100%);
+  background: linear-gradient(to right, rgba(219,219,219,1) 0%, rgba(246,246,246,1) 47%, rgba(219,219,219,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', endColorstr='#dbdbdb', GradientType=1 );
+  margin: 0px auto;
+  width: 1000px;
+}
+
+main {
+
+}
+
+.main-image-box {
+  display: flex;
+  height: 650px;
+  background-image: url('../images/nature_0.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  box-shadow: 5px 5px 5px #a6a6a6;
+  transition: 0.5s;
+  z-index: 1;
+  position:relative;
+}
+
+.main-image {
+  flex: 0 0 900px;
+}
+
+nav {
+  flex: 0 0 50px;
+  background-image: url('../images/arrow.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.right {
+  transform: rotate(180deg);
+}
+
+nav:hover {
+  background-color: black;
+  opacity: 0.5;
+}
+
+.thumbnails-container {
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnail {
+  flex: 0 0 75px;
+  height: 50px;
+  margin: 20px 20px 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  box-shadow: 5px 5px 5px #a6a6a6;
+}
+
+.thumbnail:hover {
+  position:relative;
+  top: -5px;
+}
+
+.panel-button {
+  background-image: url('../images/up_arrow.png');
+  height: 30px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.panel-close {
+  transform: translateY(-90px);
+}
+
+#thumbnails {
+  transition: 1s ease;
+}
