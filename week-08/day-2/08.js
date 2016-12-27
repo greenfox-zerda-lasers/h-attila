@@ -4,27 +4,17 @@
 //  - walk should go through the returned array of distance and change it to true
 //  - tour should return the result of walk
 
-var length = 5;
 
-var distance = function(length){
-  let result = [];
-  for (i =0; i<length; i++){
-    result.push(false);
-  }
-  return result;
-};
+function distance(steps){
+  return new Array(steps).fill(false);
+}
 
-var walk = function(arr){
-  arr.forEach(function(item, index, arr){
-    if (item === false){
-      arr[index] = true;
-    }
-  });
-  return arr;
-};
+function walk(arr){
+  return arr.map(function(){ return true; } );
+}
 
-var tour = function(walk, distance, length){
-  console.log(walk(distance(length)));
-};
+function tour(walk, distance, steps){
+  return walk(distance(steps));
+}
 
-tour(walk, distance, 5);
+console.log(tour(walk, distance, 5));

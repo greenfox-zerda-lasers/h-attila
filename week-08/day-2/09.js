@@ -3,8 +3,8 @@
 //  - create the ready function
 //  - itearate through response.data array and console.log the name property
 
-function ready(obj){
-  obj.data.forEach(function(item){
+function ready(response){
+  response.data.forEach(function(item){
     console.log(item.name);
   });
 }

@@ -1,18 +1,16 @@
 // create a function that starts a setTimeout with a 3 second delay.
 // - create a button with an event listener that can cancel the setTimeout
 
-var timer;
+function bombRobber(){
+  timer = window.setTimeout(function(){
+    alert("You're dead!");
+  }, 3000);
+}
 
-var myButton = document.querySelector('button');
-myButton.addEventListener('click', function(){
+var stopButton = document.querySelector('button');
+stopButton.addEventListener('click', function(){
   window.clearTimeout(timer);
+  alert("You're safe now.");
 });
 
-var bombExposion = function(){
-  timer = window.setTimeout(function(){
-    alert('You dead!');
-  }, 3000);
-};
-
-
-bombExposion();
+bombRobber();

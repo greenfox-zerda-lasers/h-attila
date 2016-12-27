@@ -1,9 +1,9 @@
 // create a function that when called alerts "I'm delayed" after 1 second
 
-var myAlert = function(){
+function alerts(time){
   window.setTimeout(function(){
-    alert("I'm delayed");
-  }, 1000);
-};
+    alert("I'm delayed!");
+  }, time);
+}
 
-myAlert();
+alerts(1000);
