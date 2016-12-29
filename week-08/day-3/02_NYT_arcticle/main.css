@@ -1,0 +1,23 @@
+body {
+  background-color: grey;
+  width: 800px;
+  margin: 0px auto;
+}
+
+main {
+  background-color: white;
+  text-align:left;
+}
+
+article {
+  margin: 10px;
+}
+
+a {
+  font-size: 30px;
+  text-align: center;
+}
+
+p {
+  text-align: justify;
+}
