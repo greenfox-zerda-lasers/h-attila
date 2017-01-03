@@ -1,0 +1,14 @@
+{
+  "name": "foxplayer",
+  "version": "1.0.0",
+  "description": "magic media player",
+  "main": "foxplayer-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "h-attila",
+  "license": "ISC",
+  "dependencies": {
+    "rangeslider-pure": "^0.3.11"
+  }
+}

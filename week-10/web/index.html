@@ -1,0 +1,114 @@
+<!-- created by Attila Horváth, Git: h-attila -->
+<!-- Icons made by http://www.flaticon.com    -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/rangeSlider.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <title>Foxplayer</title>
+  </head>
+  <body>
+    <main>
+      <div class="form">
+
+        <!-- TWO UPPER PANELS -->
+        <div class="main-panels">
+
+          <!-- LEFT PANEL -->
+          <div class="left-panel">
+
+            <!-- LEFT HEADER WITH IMAGES -->
+            <div class="left-header">
+
+              <div class="left-foxlogo">
+                <div class="new-playlists"><h1>Playlists</h1></div>
+                <div class="add-new-playlist"></div>
+
+              </div>
+
+              <div class="left-cover">
+              </div>
+
+            </div>
+
+            <!-- LEFT PANEL, PLAYLISTS -->
+            <div class="left-playlist">
+              <div class="all-tracks">
+                <p>All tracks</p>
+              </div>
+              <div class="favorites">
+                <p>Favorites</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT PANEL, TRACKS -->
+          <div class="right-panel">
+            <div class="right-head">
+
+              <div class="song-data">
+                <h2>Drink The Sea: The Remixes Vol. 2</h2>
+                <h3>The Gilth Mob</h3>
+              </div>
+              <div class="add-to-playlist">
+
+              </div>
+              <div class="add-to-favorites">
+
+              </div>
+
+            </div>
+
+            <div class="right-songs">
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- CONTROLL -->
+        <div class="controller">
+          <div class="prev">
+
+          </div>
+          <div class="pause">
+
+          </div>
+          <div class="next">
+
+          </div>
+          <div class="remaining-time">
+            <p>1:00</p>
+          </div>
+          <div class="seek-bar">
+            <input class="range-seek" type="range-seek" min="0" max="100" step="1" data-buffer="0" />
+          </div>
+          <div class="total-length">
+            <p>5:32</p>
+          </div>
+          <div class="shuffle">
+
+          </div>
+          <div class="mute">
+
+          </div>
+          <div class="volume">
+              <input class="range-volume" type="range-volume" min="0" max="100" step="1" data-buffer="0" />
+          </div>
+        </div>
+        <div class="controller-new">
+          <audio src="music/Ars_Sonor_-_02_-_Never_Give_Up.mp3" controls autoplay></audio>
+
+          <!-- URL FOR AUDIO TESTING https://github.com/greenfox-academy/teaching-materials/blob/master/javascript/project-music-player/music/Organoid_-_09_-_Purple_Drift.mp3?raw=true -->
+
+        </div>
+      </div>
+      <script type="text/javascript" src="scripts/rangeSlider.js"></script>
+      <script type="text/javascript" src="scripts/foxplayer.js"></script>
+    </main>
+  </body>
+</html>
