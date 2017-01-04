@@ -1,0 +1,11 @@
+{
+  "name": "day-2",
+  "version": "1.0.0",
+  "description": "second day of 9th week Greenfox",
+  "main": "http_server_test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "h-Attila",
+  "license": "ISC"
+}

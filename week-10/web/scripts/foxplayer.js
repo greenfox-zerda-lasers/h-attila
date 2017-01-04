@@ -1,17 +1,26 @@
 // AUDIO DATA
-
 var actualTrackID = 0;
 
 var audioPlayer = document.querySelector('audio');
 console.log(audioPlayer.src);
 
 var playList = [{
+  id : 0,
+  name : 'All tracks',
+  tracks : [],
+},
+{
   id : 1,
+  name : 'Favorites',
+  tracks : [],
+},
+{
+  id : 3,
   name : 'Relaxing music for programming',
   tracks : [],
 },
 {
-  id : 2,
+  id : 4,
   name : 'Party',
   tracks : [],
 }];
@@ -44,15 +53,31 @@ var playLists = document.querySelector('.left-playlist');
 playList.forEach (function(playlist, index) {
   var playlistItem = document.createElement('div');
   var playlistName = document.createElement('p');
-  var playlistDelete = document.createElement('p');
+  var playlistItemDelete = document.createElement('p');
 
   playlistItem.className = 'playlist-item';
   playlistName.className = 'playlist-name';
-  playlistDelete.className = 'playlist-delete';
+  playlistName.id = index;
   playlistName.innerHTML = playlist.name;
-
   playlistItem.appendChild(playlistName);
-  playlistItem.appendChild(playlistDelete);
+
+  // 'All TRACKS' AND 'FAVORITES' CAN NOT DELETE
+  if (index >= 2) {
+    playlistItemDelete.className = 'playlist-delete';
+    playlistItemDelete.id = index;
+    playlistItem.appendChild(playlistItemDelete);
+
+    // LISTEN FOR PLAYLIST DELETE
+    playlistItemDelete.addEventListener('click', function(item){
+      talkToServer('DELETE', '/playlists/' + id, item, console.log);
+    });
+  }
+
+  // LISTEN FOR PLAYLIST
+  playlistName.addEventListener('click', function(){
+    console.log(this.id);
+  });
+
   playLists.appendChild(playlistItem);
 });
 
@@ -65,6 +90,7 @@ playTracks.forEach (function(track, index) {
   var trackLength = document.createElement('p');
 
   newTrack.className = 'track-item';
+  newTrack.id = index;
   trackId.className = 'track-id';
   trackTitle.className = 'track-title';
   trackLength.className = 'track-length';
@@ -76,6 +102,9 @@ playTracks.forEach (function(track, index) {
   newTrack.appendChild(trackId);
   newTrack.appendChild(trackTitle);
   newTrack.appendChild(trackLength);
+  newTrack.addEventListener('click', function (item) {
+    console.log(this.id);
+  });
   tracks.appendChild(newTrack);
 });
 
@@ -99,21 +128,20 @@ var prevSong = document.querySelector('.prev');
 prevSong.addEventListener('click', function(){
   actualTrackID -= 1;
   audioPlayer.setAttribute('src', playTracks[actualTrackID].file);
-  actualSongTitle.innerHTML = playTracks[actualTrackID].title
-  actualSongAuthor.innerHTML = playTracks[actualTrackID].author
+  actualSongTitle.innerHTML = playTracks[actualTrackID].title;
+  actualSongAuthor.innerHTML = playTracks[actualTrackID].author;
   console.log(playTracks[actualTrackID].file);
 });
 
 var pauseSong = document.querySelector('.pause');
 pauseSong.addEventListener('click', function(){
+  console.log(audioPlayer.currentTime, audioPlayer.duration);
   if (audioPlayer.paused) {
-    console.log(audioPlayer.duration);
     audioPlayer.play();
-    pauseSong.style.backgroundImage = "url(images/pause.svg)"
+    pauseSong.style.backgroundImage = "url(images/pause.svg)";
   } else {
-    console.log(audioPlayer.duration);
     audioPlayer.pause();
-    pauseSong.style.backgroundImage = "url(images/play.svg)"
+    pauseSong.style.backgroundImage = "url(images/play.svg)";
   }
 });
 
@@ -121,8 +149,8 @@ var nextSong = document.querySelector('.next');
 nextSong.addEventListener('click', function(){
   actualTrackID += 1;
   audioPlayer.setAttribute('src', playTracks[actualTrackID].file);
-  actualSongTitle.innerHTML = playTracks[actualTrackID].title
-  actualSongAuthor.innerHTML = playTracks[actualTrackID].author
+  actualSongTitle.innerHTML = playTracks[actualTrackID].title;
+  actualSongAuthor.innerHTML = playTracks[actualTrackID].author;
   console.log(playTracks[actualTrackID].file);
 });
 
@@ -137,7 +165,6 @@ muteSong.addEventListener('click', function(){
 });
 
 var actualSongTitle = document.querySelector('h2');
-
 var actualSongAuthor = document.querySelector('h3');
 
 
@@ -222,3 +249,18 @@ rangeSlider.create(sliderVolume, {
 //slider.rangeSlider.onSlideStart = function (position, value) {
 //                           console.error('anotherCallback', 'position: ' + position, 'value: ' + value);
 //                       };
+
+
+// SETTING UP SERVER COMMUNICATION
+  var talkToServer = function(method, additionalUrl, data, callbackFunc){
+    let url = 'http://localhost:3000' + additionalUrl;
+    let httpRequest = new XMLHttpRequest();
+    httpRequest.open(method, url, true);
+    httpRequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    httpRequest.send(data);
+    httpRequest.onreadystatechange = function(){
+      if (httpRequest.readyState === XMLHttpRequest.DONE){
+        callbackFunc(JSON.parse(httpRequest.response));
+      }
+    };
+  };

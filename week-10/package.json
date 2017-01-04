@@ -1,14 +1,21 @@
 {
   "name": "foxplayer",
   "version": "1.0.0",
-  "description": "magic media player",
-  "main": "foxplayer-server.js",
+  "description": "foxplayer project",
+  "main": "foxplayer_server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "h-attila",
   "license": "ISC",
   "dependencies": {
-    "rangeslider-pure": "^0.3.11"
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.15.2",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-plugin-import": "^2.2.0"
   }
 }
