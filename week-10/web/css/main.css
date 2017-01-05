@@ -7,9 +7,7 @@ body {
 
 main {
   flex: 0 0 702px;
-  background-color: #f5f5f5;
-  border: 1px solid #dbdbdb;
-  border-radius: 8px;
+
 
 }
 
@@ -19,6 +17,11 @@ main {
   -moz-box-shadow: 0px 8px 10px 2px rgba(189,189,189,1);
   box-shadow: 0px 8px 10px 2px rgba(189,189,189,1);
   border-radius: 0px 0px 8px 8px;
+  background-color: #f5f5f5;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  z-index: 1;
+  position:relative;
 }
 
 .main-panels {
@@ -82,12 +85,12 @@ p {
 
 .new-playlists {
   margin: 110px 0px 0px 15px;
-  flex: 0 0 30px;
+  flex: 0 0 40px;
 }
 
 .add-new-playlist {
   flex: 0 0 20px;
-  margin: 110px 0px 0px 70px;
+  margin: 110px 0px 0px 80px;
   height: 27px;
   background-image: url('../images/plus.svg');
   background-size: 18px;
@@ -105,6 +108,7 @@ p {
 
 .left-playlist {
   height: 200px;
+  overflow: scroll;
 }
 
 .playlist-item {
@@ -118,6 +122,10 @@ p {
 
 .playlist-item:nth-child(odd){
   background-color: #EAEAEA;
+}
+
+.playlist-item:hover {
+  background-color: #ABE7E5;
 }
 
 .playlist-name {
@@ -162,6 +170,10 @@ p {
   background-repeat: no-repeat;
 }
 
+.right-songs {
+  overflow: scroll;
+}
+
 .track-item:nth-child(even){
   background-color: #F5F5F5;
 }
@@ -176,6 +188,10 @@ p {
   padding: 10px 0px 0px 15px;
 }
 
+.track-item:hover {
+  background-color: #ABE7E5;
+}
+
 .track-item p {
   margin: 0px;
 }
@@ -185,11 +201,11 @@ p {
 }
 
 .track-title {
-  flex: 0 0 285px;
+  flex: 0 0 290px;
 }
 
 .track-length {
-  flex: 0 0 50px;
+  flex: 0 0 30px;
 }
 
 
@@ -199,6 +215,8 @@ p {
   border-radius: 0px 0px 8px 8px;
   height: 50px;
   display: flex;
+  z-index: 1;
+  position:relative;
 }
 
 .prev {
@@ -228,7 +246,7 @@ p {
   margin-left: 20px;
 }
 
-.remaining-time {
+.current-time {
   flex: 0 0 20px;
   margin-left: 25px;
 }
@@ -241,7 +259,7 @@ p {
 }
 
 .seek-bar {
-  flex: 0 0 300px;
+  flex: 0 0 280px;
   margin: 22px 0px 0px 10px;
 }
 
@@ -271,4 +289,29 @@ p {
 .volume {
   flex: 0 0 80px;
   margin: 22px 0px 0px 5px;
+}
+
+
+
+.thumbnails-container {
+  display: flex;
+  justify-content: center;
+}
+
+.panel-button {
+  background-image: url('../images/up_arrow.png');
+  height: 30px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.panel-close {
+  transform: translateY(-90px);
+}
+
+#thumbnails {
+  transition: 1s ease;
+  background-color: yellow;
+
 }
