@@ -1,3 +1,46 @@
+// **********************
+// P5 FOR SOUND ANIMATION
+// **********************
+
+var sound;
+
+function preload () {
+  sound = loadSound('music/Organoid_-_09_-_Purple_Drift.mp3');
+}
+
+function setup(){
+  var cnv = createCanvas(600,250);
+  cnv.parent('myContainer');
+  cnv.mouseClicked(togglePlay);
+  fft = new p5.FFT();
+}
+
+function draw(){
+  background(200);
+
+  var waveform = fft.waveform();
+  noFill();
+  beginShape();
+  stroke(255,0,0); // waveform is red
+  strokeWeight(1);
+  for (var i = 0; i< waveform.length; i++){
+    var x = map(i, 0, waveform.length, 0, width);
+    var y = map( waveform[i], -1, 1, 0, height);
+    vertex(x,y);
+  }
+  endShape();
+
+  text('click to play/pause', 4, 10);
+}
+
+// fade sound if mouse is over canvas
+function togglePlay() {
+  if (sound.isPlaying()) {
+    sound.pause();
+  } else {
+    sound.loop();
+  }
+}
 
 // **********************
 // MAIN APP DEFINITIONS
@@ -58,7 +101,6 @@ var app = {
         // LIST THE TRACKS OF THE PLAYLIST - EVENT LISTENER
         playlistName.addEventListener('click', function(){
           app.actualPlayListID = this.id;
-          console.log(app.actualPlayListID);
           ajax.talkToServer('GET', '/playlis-tracks/' + this.id, null, app.trackListCreate);
         });
         playLists.appendChild(playlistItem);
@@ -68,7 +110,6 @@ var app = {
     // LIST TRACKS ON RIGHT PANEL
     trackListCreate : function (playTracks){
       app.playTracks = playTracks;
-
       var trackItems = document.querySelector('.right-songs');
       trackItems.innerHTML = '';
       playTracks.forEach (function(track, index) {
@@ -83,7 +124,7 @@ var app = {
         trackTitle.className = 'track-title';
         trackLength.className = 'track-length';
 
-        trackId.innerHTML = track.id;
+        trackId.innerHTML = index+1;
         trackTitle.innerHTML = track.title;
         trackLength.innerHTML = track.length;
 
@@ -95,6 +136,12 @@ var app = {
           app.audioPlayer.setAttribute('src', app.playTracks[index].path);
           actualSongTitle.innerHTML = app.playTracks[index].title;
           actualSongAuthor.innerHTML = app.playTracks[index].author;
+          var actualSongCover = document.querySelector('.left-cover');
+          if (app.playTracks[index].cover !== "") {
+            actualSongCover.style.backgroundImage = "url(" + app.playTracks[index].cover + ")";
+          } else {
+            actualSongCover.style.backgroundImage = "url('../images/music-placeholder.png')";
+          }
         });
         trackItems.appendChild(newTrack);
       });
@@ -129,8 +176,7 @@ var ajax = {
 //  EVENT HANDLING
 // *****************
 
-// POPUP WINDOW HANDLING
-// ADD NEW PLAYLIST
+// ADD NEW PLAYLIST - OPENS POPUP WINDOW
 var addNewPlaylist = document.querySelector('.add-new-playlist');
 addNewPlaylist.addEventListener('click', function(){
 
@@ -144,11 +190,10 @@ addNewPlaylist.addEventListener('click', function(){
   });
 });
 
-// ADD NEW TRACK TO THE PLAYLIST ** not work!
+// ADD NEW TRACK TO THE PLAYLIST ** not work on front!
 var addToPlaylist = document.querySelector('.add-to-playlist');
 addToPlaylist.addEventListener('click', function(){
-  console.log(app.playTracks[app.actualTrackID].id);
-  ajax.talkToServer('POST', '/playlist-tracks/' + app.actualPlayListID + '/', app.playTracks[app.actualTrackID].id, null, app.trackListCreate);;
+  ajax.talkToServer('POST', '/playlist-tracks/' + app.actualPlayListID + '/', app.playTracks[app.actualTrackID].id, null, app.trackListCreate);
 });
 
 // ADD NEW TRACK TO THE FAVORITES
@@ -190,6 +235,7 @@ rangeSlider.create(slider, {
     },
 });
 
+// TIME CHANGE EVENTS, REFRESH ACTUAL TRACK POSITION, DURATION, SLIDER
 app.audioPlayer.addEventListener('timeupdate',function(){
   var timeSecFromMillisec = function (seconds) {
     sec = Math.floor( seconds );
@@ -205,12 +251,10 @@ app.audioPlayer.addEventListener('timeupdate',function(){
     totalLength.innerHTML = "<p>" + timeSecFromMillisec(app.audioPlayer.duration) + "</p>";
 
     if (app.audioPlayer.duration === app.audioPlayer.currentTime && app.actualTrackID < app.playTracks.length-1) {
-      console.log("next track!");
       loadNextTrack();
     }
     slider.rangeSlider.update({ value: app.audioPlayer.currentTime/app.audioPlayer.duration*100});
   }
-
 }, false);
 
 
@@ -219,11 +263,12 @@ app.audioPlayer.addEventListener('timeupdate',function(){
 // *********************
 
 
-// expects between 0-100 value
+// REFRESH SEEK SLIDER
 function seek( percent ){
   app.audioPlayer.currentTime = app.audioPlayer.duration * percent;
 }
 
+// PREVIOUS SONG
 var prevSong = document.querySelector('.prev');
 prevSong.addEventListener('click', function(){
   if (app.actualTrackID > 0) {
@@ -232,8 +277,15 @@ prevSong.addEventListener('click', function(){
   app.audioPlayer.setAttribute('src', app.playTracks[app.actualTrackID].path);
   actualSongTitle.innerHTML = app.playTracks[app.actualTrackID].title;
   actualSongAuthor.innerHTML = app.playTracks[app.actualTrackID].author;
+  var actualSongCover = document.querySelector('.left-cover');
+  if (app.playTracks[app.actualTrackID].cover !== "") {
+    actualSongCover.style.backgroundImage = "url(" + app.playTracks[app.actualTrackID].cover + ")";
+  } else {
+    actualSongCover.style.backgroundImage = "url('../images/music-placeholder.png')";
+  }
 });
 
+// PAUSE SONG
 var pauseSong = document.querySelector('.pause');
 pauseSong.addEventListener('click', function(){
   if (app.audioPlayer.paused) {
@@ -252,22 +304,32 @@ var loadNextTrack = function () {
   app.audioPlayer.setAttribute('src', app.playTracks[app.actualTrackID].path);
   actualSongTitle.innerHTML = app.playTracks[app.actualTrackID].title;
   actualSongAuthor.innerHTML = app.playTracks[app.actualTrackID].author;
+  var actualSongCover = document.querySelector('.left-cover');
+  if (app.playTracks[app.actualTrackID].author !== "") {
+    actualSongCover.style.backgroundImage = "url(" + app.playTracks[app.actualTrackID].cover + ")";
+  } else {
+    actualSongCover.style.backgroundImage = "url('../images/music-placeholder.png')";
+  }
 };
 
+// NEXT SONG
 var nextSong = document.querySelector('.next');
 nextSong.addEventListener('click', function(){
   loadNextTrack();
 });
 
+// SHUFFLE SONG
 var shuffleSong = document.querySelector('.shuffle');
 shuffleSong.addEventListener('click', function(){
   console.log('shuffle song');
 });
 
+// MUTE SONG
 var muteSong = document.querySelector('.mute');
 muteSong.addEventListener('click', function(){
   console.log('mute song');
 });
+
 
 var actualSongTitle = document.querySelector('h2');
 var actualSongAuthor = document.querySelector('h3');

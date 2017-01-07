@@ -1,14 +1,15 @@
 /* BODY AND FORM SECTION */
 body {
-  background-color: white;
+  background-image: url('../images/background_3.jpg');
   display: flex;
   justify-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 main {
   flex: 0 0 702px;
-
-
 }
 
 .form {
@@ -66,7 +67,7 @@ p {
 }
 
 .right-panel {
-  flex: 0 0 360px;
+  flex: 0 0 359px;
   border-left: 1px solid #dbdbdb;
 }
 
@@ -100,7 +101,7 @@ p {
 
 .left-cover {
   flex: 0 0 140px;
-  background-image: url('../images/music-placeholder.png');
+  background-image: url('../covers/ars_sonor_never.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -125,7 +126,7 @@ p {
 }
 
 .playlist-item:hover {
-  background-color: #ABE7E5;
+  background-color: #3CB879;
 }
 
 .playlist-name {
@@ -170,8 +171,13 @@ p {
   background-repeat: no-repeat;
 }
 
+.right-panel {
+  width: 360px;
+}
+
 .right-songs {
   overflow: scroll;
+  height: 280px;
 }
 
 .track-item:nth-child(even){
@@ -189,7 +195,7 @@ p {
 }
 
 .track-item:hover {
-  background-color: #ABE7E5;
+  background-color: #3CB879;
 }
 
 .track-item p {
@@ -292,10 +298,12 @@ p {
 }
 
 
+/* ANIMATION */
 
 .thumbnails-container {
   display: flex;
   justify-content: center;
+  height: 250px;
 }
 
 .panel-button {
@@ -304,14 +312,21 @@ p {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  transform: rotate(180deg);
 }
 
 .panel-close {
-  transform: translateY(-90px);
+  transform: translateY(-250px);
 }
 
 #thumbnails {
   transition: 1s ease;
-  background-color: yellow;
+  background-color: #EAEAEA;
+  border-radius: 8px;
+}
+
+/* EQUALIZER */
+
+.equalizer {
 
 }
