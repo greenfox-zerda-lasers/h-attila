@@ -31,7 +31,7 @@ function draw(){
   endShape();
 
   text('click to play/pause', 4, 10);
-}
+  }
 
 // fade sound if mouse is over canvas
 function togglePlay() {
