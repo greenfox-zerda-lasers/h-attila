@@ -1,9 +1,9 @@
-var express = require('express');
+const express = require('express');
 
-var app = express();
+const app = express();
 
 // INIT DATA AFTER START
-var todoData = [
+const todoData = [
   {
     completed: true,
     id: 1,
@@ -25,27 +25,27 @@ var todoData = [
 app.use('/', express.static('web'));
 
 // RESPOND ALL TODO DATA
-app.get('/todos', function (req, res) {
+app.get('/todos', (req, res) => {
   res.send(todoData);
 });
 
 // RESPOND ONE TODO DATA
-app.get('/todod/:id', function (req, res) {
+app.get('/todod/:id', (req, res) => {
   res.send(todoData[req.params.id - 1]);
 });
 
 // ADD NEW TODO ITEM TO TODODATA ARRAY
-app.post('/todos', function (req, res) {
-  var reqBody = [];
+app.post('/todos', (req, res) => {
+  let reqBody = [];
   if (todoData.length > 0) {
-    var newItemId = todoData[todoData.length - 1].id + 1;
+    let newItemId = todoData[todoData.length - 1].id + 1;
   } else {
-    var newItemId = 0;
+    let newItemId = 0;
   }
-  var newText = '';
-  req.on('data', function (chunk) {
+  let newText = '';
+  req.on('data', (chunk) => {
     reqBody.push(chunk);
-  }).on('end', function () {
+  }).on('end', () => {
     reqBody = Buffer.concat(reqBody).toString();
     newText = JSON.parse(reqBody).text;
     todoData.push({ completed: false, id: newItemId, text: newText });
@@ -54,9 +54,9 @@ app.post('/todos', function (req, res) {
 });
 
 // TOGGLE TODO ITEM COMPLETED
-app.put('/todos/:id', function (req, res) {
-  todoData.forEach(function (item, index) {
-    if (item.id === parseInt(req.params.id)) {
+app.put('/todos/:id', (req, res) => {
+  todoData.forEach((item, index) => {
+    if (item.id === parseInt(req.params.id, 10)) {
       todoData[index].completed = !todoData[index].completed;
     }
   });
@@ -64,9 +64,9 @@ app.put('/todos/:id', function (req, res) {
 });
 
 // DELETE ONE TODO ITEM
-app.delete('/todos/:id', function (req, res) {
-  todoData.forEach(function (item, index) {
-    if (item.id === parseInt(req.params.id)) {
+app.delete('/todos/:id', (req, res) => {
+  todoData.forEach((item, index) => {
+    if (item.id === parseInt(req.params.id, 10)) {
       todoData.splice(index, 1);
     }
   });
