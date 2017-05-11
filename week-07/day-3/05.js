@@ -7,8 +7,7 @@ var numbers = [2.4, 3.5, 1.7, 3.3, 1.2];
 // bigger than 2 and all of it's elements should be rounded
 
 function myMagicArray(arr){
-  var newArr = arr.filter(function(item){ return item > 2 }).map(function(number) { return Math.round(number) });
-  return newArr;
+  return arr.filter(function(item){ return item > 2 }).map(function(number) { return Math.round(number) });
 }
 
 console.log(myMagicArray(numbers));

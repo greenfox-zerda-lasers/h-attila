@@ -22,6 +22,11 @@ function oddNumbersWithFilter (numbers){
   return newArr2;
 }
 
+function oddNumbersWithFilterOneLine (numbers){
+  return numbers.filter(number => number%2 === 0);
+}
+
 
 console.log(oddNumbers(numbers));
 console.log(oddNumbersWithFilter(numbers));
+console.log(oddNumbersWithFilterOneLine(numbers));

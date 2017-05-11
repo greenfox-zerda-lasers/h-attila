@@ -5,8 +5,10 @@
 
 window.addEventListener('DOMContentLoaded', function(){
     document.body.style.backgroundColor = 'red';
+    console.log('red');
 });
 
 window.addEventListener('load', function(){
   document.body.style.backgroundColor = 'white';
+  console.log('white');
 });

@@ -6,4 +6,6 @@ app.get('*', function (req, res) {
   res.send('request url: ' + req.url + ', request methold: ' + req.method + ', date: ' + date);
 });
 
+console.log('server listening');
+
 app.listen(3000);

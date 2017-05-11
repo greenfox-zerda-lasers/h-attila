@@ -74,4 +74,5 @@ app.delete('/todos/:id', function (req, res) {
 });
 
 // START SERVER
+console.log('server listening');
 app.listen(3000);

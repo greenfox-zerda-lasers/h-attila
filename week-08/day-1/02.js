@@ -6,12 +6,8 @@
 // Every rectangle should have a method called getCircumference() that returns its circumference
 
 function Rectangle(a, b){
-  this.getArea = function(){
-    return a*b;
-  };
-  this.getCircumference = function(){
-    return 2*(a+b);
-  };
+  this.getArea = () => a*b;
+  this.getCircumference = () => 2*(a+b);
 }
 
 var newRectangle_1 = new Rectangle(2, 3);
