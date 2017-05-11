@@ -1,12 +1,10 @@
-// require('image_data.js')
-
-var numberOfImages = 7;
-var imageData = [];
-var imagesArr = [];
-var currentImagePos = 0;
+let numberOfImages = 7;
+let imageData = [];
+let imagesArr = [];
+let currentImagePos = 0;
 
 // CREATING IMAGES DATA TO imagesArr
-for (var i=0; i<numberOfImages; i++){
+for (let i=0; i<numberOfImages; i++){
   imageData.push('nature_' + i + '.jpg');
   imageData.push('nature_' + i + '_thumb.jpg');
   imagesArr.push(imageData);
@@ -14,7 +12,7 @@ for (var i=0; i<numberOfImages; i++){
 }
 
 // LEFT-RIGHT BUTTONS
-var leftButton = document.querySelector('.left');
+let leftButton = document.querySelector('.left');
 leftButton.addEventListener('click', function(){
   currentImagePos--;
   if (currentImagePos<=0){
@@ -23,7 +21,7 @@ leftButton.addEventListener('click', function(){
   mainImageChanger(currentImagePos);
 });
 
-var rightButton = document.querySelector('.right');
+let rightButton = document.querySelector('.right');
 rightButton.addEventListener('click', function(){
   currentImagePos++;
   if (currentImagePos>=imagesArr.length-1){
@@ -34,14 +32,14 @@ rightButton.addEventListener('click', function(){
 
 // UPDATE MAIN IMAGE
 function mainImageChanger(currentImagePos){
-  var imageBody = document.querySelector('.main-image-box');
+  let imageBody = document.querySelector('.main-image-box');
   imageBody.style.backgroundImage = 'url("images/' + imagesArr[currentImagePos][0] + '")';
 };
 
 // THUMBNAILS
-var thumbnailsContainer = document.querySelector('.thumbnails-container');
-for (var i=0; i<imagesArr.length; i++){
-  var newThumbnail = document.createElement('div');
+let thumbnailsContainer = document.querySelector('.thumbnails-container');
+for (let i=0; i<imagesArr.length; i++){
+  let newThumbnail = document.createElement('div');
   newThumbnail.className = 'thumbnail';
   newThumbnail.id = i;
   newThumbnail.style.backgroundImage = 'url("images/' + imagesArr[i][1] + '")';
@@ -52,8 +50,8 @@ for (var i=0; i<imagesArr.length; i++){
 }
 
 // THUMBNAIL ANIMATION
-var thumbnailsButton = document.querySelector('.panel-button');
-var thumbnailsPanel = document.querySelector('#thumbnails');
+let thumbnailsButton = document.querySelector('.panel-button');
+let thumbnailsPanel = document.querySelector('#thumbnails');
 thumbnailsButton.addEventListener('click', function(){
   thumbnailsPanel.classList.toggle('panel-close');
   if (thumbnailsPanel.classList.contains('panel-close')){

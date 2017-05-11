@@ -1,6 +1,9 @@
 body {
   margin: 0px auto;
   max-width: 1000px;
+  margin: 0px auto;
+  width: 1000px;
+
   background: rgba(219,219,219,1);
   background: -moz-linear-gradient(left, rgba(219,219,219,1) 0%, rgba(246,246,246,1) 47%, rgba(219,219,219,1) 100%);
   background: -webkit-gradient(left top, right top, color-stop(0%, rgba(219,219,219,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(219,219,219,1)));
@@ -9,12 +12,12 @@ body {
   background: -ms-linear-gradient(left, rgba(219,219,219,1) 0%, rgba(246,246,246,1) 47%, rgba(219,219,219,1) 100%);
   background: linear-gradient(to right, rgba(219,219,219,1) 0%, rgba(246,246,246,1) 47%, rgba(219,219,219,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', endColorstr='#dbdbdb', GradientType=1 );
-  margin: 0px auto;
-  width: 1000px;
 }
 
-main {
-
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 42px;
+  text-align: center;
 }
 
 .main-image-box {
@@ -40,15 +43,17 @@ nav {
   background-image: url('../images/arrow.svg');
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.right {
-  transform: rotate(180deg);
+  transition: 0.5s;
 }
 
 nav:hover {
   background-color: black;
   opacity: 0.5;
+  transition: 0.5s;
+}
+
+.right {
+  transform: rotate(180deg);
 }
 
 .thumbnails-container {
@@ -67,7 +72,7 @@ nav:hover {
 }
 
 .thumbnail:hover {
-  position:relative;
+  position: relative;
   top: -5px;
 }
 
