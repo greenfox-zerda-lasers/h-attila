@@ -36,13 +36,13 @@ app.get('/todod/:id', (req, res) => {
 
 // ADD NEW TODO ITEM TO TODODATA ARRAY
 app.post('/todos', (req, res) => {
-  let reqBody = [];
+  var reqBody = [];
   if (todoData.length > 0) {
-    let newItemId = todoData[todoData.length - 1].id + 1;
+    var newItemId = todoData[todoData.length - 1].id + 1;
   } else {
-    let newItemId = 0;
+    var newItemId = 0;
   }
-  let newText = '';
+  var newText = '';
   req.on('data', (chunk) => {
     reqBody.push(chunk);
   }).on('end', () => {
@@ -53,7 +53,7 @@ app.post('/todos', (req, res) => {
   res.send(true);
 });
 
-// TOGGLE TODO ITEM COMPLETED
+// TOGGLE TODO ITEM completed
 app.put('/todos/:id', (req, res) => {
   todoData.forEach((item, index) => {
     if (item.id === parseInt(req.params.id, 10)) {

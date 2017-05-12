@@ -107,7 +107,7 @@ li:hover {
 }
 
 .todo-checked {
-  flex: 0 0 35px;
+  flex: 0 0 40px;
   background-size: 35px;
   background-repeat: no-repeat;
   background-position: center;

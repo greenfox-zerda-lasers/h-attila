@@ -8,7 +8,7 @@ main {
   max-height: 950px;
   font-family: 'Lato', sans-serif;
   color: #D8973C;
-/*  background-color: #4A412A; */
+  background-color: #4A412A; 
   background-image: url("../images/background.jpg");
   background-size: 2000px;
   border-radius: 3px;
