@@ -130,7 +130,7 @@ p {
 }
 
 .playlist-name {
-  flex: 0 0 300px;
+  flex: 0 0 290px;
   padding: 10px 0px 0px 15px;
 }
 
@@ -162,7 +162,6 @@ p {
   background-repeat: no-repeat;
 }
 
-
 .add-to-favorites {
   flex: 0 0 25px;
   background-image: url('../images/star.svg');
@@ -176,7 +175,7 @@ p {
 }
 
 .right-songs {
-  overflow: scroll;
+  overflow: auto;
   height: 280px;
 }
 
@@ -207,7 +206,7 @@ p {
 }
 
 .track-title {
-  flex: 0 0 290px;
+  flex: 0 0 275px;
 }
 
 .track-length {
@@ -323,10 +322,4 @@ p {
   transition: 1s ease;
   background-color: #EAEAEA;
   border-radius: 8px;
-}
-
-/* EQUALIZER */
-
-.equalizer {
-
 }

@@ -11,9 +11,9 @@
   "dependencies": {
     "express": "^4.14.0",
     "vex-dialog": "^1.0.6"
+    "body-parser": "^1.15.2",
   },
   "devDependencies": {
-    "body-parser": "^1.15.2",
     "eslint": "^3.12.2",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-config-airbnb-base": "^11.0.0",
