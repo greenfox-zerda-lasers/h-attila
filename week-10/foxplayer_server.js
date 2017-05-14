@@ -39,6 +39,7 @@ var playlists = [
 
 // GET PLAYLISTS FROM SERVER
 app.get('/playlists', function (req, res) {
+  console.log(playlists);
   res.json(playlists);
 });
 
@@ -67,10 +68,10 @@ app.get('/playlis-tracks/', function (req, res) {
 
 // LIST THE TRACKS OF THE PLAYLIST
 app.get('/playlis-tracks/:playlist_id', function (req, res) {
-  playlists = tracks.filter(function (trackItem) {
+  var actualAlaylists = tracks.filter(function (trackItem) {
     return trackItem.playlist_id.indexOf(parseInt(req.params.playlist_id, 10)) >= 0;
   });
-  res.json(playlists);
+  res.json(actualAlaylists);
 });
 
 // ADD NEW TRACK TO THE PLAYLIST BY ID

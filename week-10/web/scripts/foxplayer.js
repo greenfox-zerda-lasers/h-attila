@@ -1,50 +1,3 @@
-// **********************
-// P5 FOR SOUND ANIMATION
-// **********************
-
-// P5 player is demo only, it use a different player
-
-let sound;
-
-function preload() {
-  sound = loadSound('music/Organoid_-_09_-_Purple_Drift.mp3');
-}
-
-function setup() {
-  let cnv = createCanvas(600, 250);
-  cnv.parent('myContainer');
-  cnv.mouseClicked(togglePlay);
-  fft = new p5.FFT();
-}
-
-function draw() {
-  background(200);
-
-  let waveform = fft.waveform();
-  noFill();
-  beginShape();
-  stroke(255, 0, 0); // waveform is red
-  strokeWeight(1);
-  for (let i = 0; i < waveform.length; i++) {
-    var x = map(i, 0, waveform.length, 0, width);
-    var y = map(waveform[i], -1, 1, 0, height);
-    vertex(x, y);
-  }
-  endShape();
-
-  text('click to play/pause', 4, 10);
-}
-
-// fade sound if mouse is over canvas
-function togglePlay() {
-  if (sound.isPlaying()) {
-    sound.pause();
-  } else {
-    sound.loop();
-  }
-}
-
-
 // ***********************
 //  SERVER COMMUNICATION
 // ***********************
@@ -90,11 +43,6 @@ var app = {
   init: () => {
     ajax.talkToServer('GET', '/playlists', null, app.playlistsCreate);
     ajax.talkToServer('GET', '/playlis-tracks/', null, app.trackListCreate);
-  },
-
-  // LOGO, NOTIFICATIONS
-  logo: function () {
-    // logo, notifications comes here
   },
 
   // CREATE, LIST PLAYLISTS ON LEFT PANEL
@@ -193,23 +141,6 @@ addNewPlaylist.addEventListener('click', () => {
     },
   });
 });
-
-// ADD NEW TRACK TO THE PLAYLIST
-// this function under construction - missing selector in dialog box
-//
-// let addToPlaylist = document.querySelector('.add-to-playlist');
-//
-// SELECT PLAYLIST - DIALOG BOX
-// vex.dialog.prompt({
-//   message: 'Please select the playlist',
-//   placeholder: 'newlist',
-//   callback: (value) => {
-//     ajax.talkToServer('POST', '/playlists', { value }, app.playlistsCreate);
-//   },
-// });
-// addToPlaylist.addEventListener('click', () => {
-//   ajax.talkToServer('POST', '/playlist-tracks/' + app.actualPlayListID + '/', app.playTracks[app.actualTrackID].id, null, app.trackListCreate);
-// });
 
 // ADD NEW TRACK TO THE FAVORITES
 var addToFavorites = document.querySelector('.add-to-favorites');
@@ -353,7 +284,7 @@ var actualSongAuthor = document.querySelector('h3');
 var sliderVolume = document.querySelectorAll('input[type="range-volume"]');
 
 rangeSlider.create(sliderVolume, {
-  polyfill: true,     // Boolean, if true, custom markup will be created
+  polyfill: true,  // Boolean, if true, custom markup will be created
   rangeClass: 'rangeSlider',
   disabledClass: 'rangeSlider--disabled',
   fillClass: 'rangeSlider__fill',
@@ -396,6 +327,52 @@ thumbnailsButton.addEventListener('click', () => {
     thumbnailsButton.style.transform = 'rotate(0deg)';
   }
 });
+
+// **********************
+// P5 FOR SOUND ANIMATION
+// **********************
+
+// P5 player is demo only, it uses own player
+
+let sound;
+
+function preload() {
+  sound = loadSound('music/Organoid_-_09_-_Purple_Drift.mp3');
+}
+
+function setup() {
+  let cnv = createCanvas(600, 250);
+  cnv.parent('myContainer');
+  cnv.mouseClicked(togglePlay);
+  fft = new p5.FFT();
+}
+
+function draw() {
+  background(200);
+
+  let waveform = fft.waveform();
+  noFill();
+  beginShape();
+  stroke(255, 0, 0); // waveform is red
+  strokeWeight(1);
+  for (let i = 0; i < waveform.length; i++) {
+    var x = map(i, 0, waveform.length, 0, width);
+    var y = map(waveform[i], -1, 1, 0, height);
+    vertex(x, y);
+  }
+  endShape();
+
+  text('click to play/pause', 4, 10);
+}
+
+// fade sound if mouse is over canvas
+function togglePlay() {
+  if (sound.isPlaying()) {
+    sound.pause();
+  } else {
+    sound.loop();
+  }
+}
 
 // ****************************
 //  MAIN PROGRAM STARTS HERE
